@@ -14,4 +14,14 @@ from app import create_app
 
 if __name__ == "__main__":
     demo = create_app()
-    demo.launch(server_name="127.0.0.1", server_port=7860, inbrowser=False)
+    import socket
+    def find_free_port(start_port=7860):
+        for port in range(start_port, start_port + 50):
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                if s.connect_ex(("127.0.0.1", port)) != 0:
+                    return port
+        return 7860
+
+    port = find_free_port(7860)
+    print(f"\n🚀 Opening EM Unit Cell AI Studio at http://127.0.0.1:{port} ...")
+    demo.launch(server_name="127.0.0.1", server_port=port, inbrowser=True)
