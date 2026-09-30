@@ -1,0 +1,34 @@
+# configs/geometry_spec.yaml
+# Specification of physical unit cell geometry, materials, and solver settings.
+# Per PLAN.md H1 and AGENTS.md rule 2, fields marked TODO must be supplied from the COMSOL .mph file.
+
+a_um: 210.01                 # lattice constant used for normalisation
+cell:
+  x_um: 363.75
+  y_um: 210.01
+  n_lattice_points_in_cell: TODO  # 1 or 2 (hex in rectangular supercell?)
+lattice: TODO                # hexagonal | rectangular | other
+polarization: TODO           # TE (H_z) | TM (E_z) | both-mixed   (what does the COMSOL study solve?)
+structures:
+  para:
+    background:
+      eps_r: TODO
+    inclusions:              # list; coordinates relative to cell origin, in um
+      - shape: TODO
+        eps_r: TODO
+        center_um: [TODO, TODO]
+        size_params:
+          L1: TODO
+          L2: TODO
+  r1:
+    background:
+      eps_r: TODO
+    inclusions: TODO
+k_path:                      # how k in [0.1, 2.9] maps to (kx, ky)
+  segments: TODO             # e.g. [[G,X],[X,M],[M,G]] with coordinates in units of 2pi/cell
+  kink_indices: [90, 190]
+solver:
+  n_eigs_requested: TODO
+  search_around_GHz: TODO
+  has_PML_or_loss: TODO
+materials_dispersive_or_metal: TODO   # if true, PWE is invalid: report and stop
