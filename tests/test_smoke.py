@@ -40,12 +40,13 @@ def test_cpu_first_device():
     dev_explicit = get_device("cpu")
     assert dev_explicit.type == "cpu"
 
-def test_existing_codebase_presence():
-    """Verify existing modules are present on disk for wrapping."""
+def test_physics_codebase_presence():
+    """The maintained package contains physics, not the retired ML interfaces."""
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    legacy_dir = os.path.join(root_dir, "inverse-design-em", "src")
-    assert os.path.exists(os.path.join(legacy_dir, "models", "gp_pca.py")), "gp_pca.py must exist"
-    assert os.path.exists(os.path.join(legacy_dir, "models", "mlp.py")), "mlp.py must exist"
-    assert os.path.exists(os.path.join(legacy_dir, "models", "baseline.py")), "baseline.py must exist"
-    assert os.path.exists(os.path.join(legacy_dir, "inverse.py")), "inverse.py must exist"
-    assert os.path.exists(os.path.join(legacy_dir, "aggregate.py")), "aggregate.py must exist"
+    physics_dir = os.path.join(root_dir, "src", "invdes")
+    for relative in ("interface_pwe.py", "radial_projector_quadrature.py",
+                     "inverse/pure_pwe.py", "inverse/physics_trust_region.py",
+                     "inverse/quadrature_forward.py"):
+        assert os.path.isfile(os.path.join(physics_dir, relative)), relative
+    assert not os.path.exists(os.path.join(physics_dir, "baselines"))
+    assert not os.path.exists(os.path.join(physics_dir, "multifidelity"))

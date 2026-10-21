@@ -1,0 +1,32 @@
+{
+  "experiment_version": "pure_pwe_response_atlas_v2",
+  "output_directory": "results/pure_pwe_response_atlas_v2",
+  "description": "Second bounded adaptive sampled-path-gap atlas. It reuses integrity-checked M20 observations from the completed v1 atlas, adds target-contour samples, and constrains visible surrogate overshoot. The processed COMSOL data remains a reference-only layer.",
+  "base_config": "configs/pure_pwe_math_inverse_v1.json",
+  "seed_experiment": "results/pure_pwe_multistart_v1",
+  "seed_atlas": "results/pure_pwe_response_atlas_v1",
+  "processed_comsol_data": "data/processed/bands.npz",
+  "structure_index": 0,
+  "structure_label": "para",
+  "targets_GHz": [7.5, 15.0, 22.5, 27.5],
+  "search_cutoff": 20,
+  "candidate_grid_size": 31,
+  "minimum_normalized_separation": 0.045,
+  "initial_coverage_evaluations": 0,
+  "pilot_new_evaluations": 12,
+  "maximum_new_evaluations": 24,
+  "max_runtime_hours": 2,
+  "surrogate": {
+    "kind": "thin_plate_rbf",
+    "smoothing": 0.02,
+    "target_proximity_GHz": 3.0,
+    "target_priority": 1.5,
+    "overshoot_priority": 1.25,
+    "overshoot_every": 3
+  },
+  "scope": "Exploratory M20 sampled-path-gap mapping. Every third new point is selected to constrain values that leave the observed PWE range; the remaining points refine prescribed target contours. This contour map is neither an M25 validation nor a full-Brillouin-zone or continuum certificate.",
+  "ml_training": false,
+  "comsol_used_for_pwe_fit": false,
+  "comsol_used_as_reference_only": true,
+  "continuum_accuracy_certified": false
+}

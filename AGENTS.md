@@ -1,38 +1,55 @@
-# AGENTS.md — Physics-Informed Inverse Design of EM Unit Cells
+# AGENTS.md — Pure-PWE electromagnetic forward and inverse design
 
-Read this file fully before every task. The task list lives in `PLAN.md`. If the two conflict, this file wins.
+## Current scope
+The user retired the ML workflow on 2026-10-21. Maintain only pure plane-wave
+expansion (PWE), geometry/material calculations, analytic sensitivities, bounded
+inverse search, response-atlas proposals, and their validation/audit tools.
+No GP/PCA, neural-network, learned residual, or ML training workflow belongs in
+this package. PyTorch is a numerical CPU/GPU backend, not a training requirement.
+The original ML plan and removed files have a recoverable external archive.
 
-## Project in one paragraph
-We have 128 COMSOL eigenfrequency band diagrams (2 structures: `para`, `r1`; each an 8×8 grid of inclusion sizes L1, L2; 281 k-points; 2 bands, sorted by frequency). We are building (a) a fast differentiable forward model (plane-wave-expansion physics + a small learned residual) and (b) an inverse-design engine (target response → L1, L2), **without calling COMSOL during development or optimisation**. Everything must be reproducible by an outside reviewer with no COMSOL licence.
+## Scientific rules
+- Never call COMSOL or edit raw exports. Use saved processed reference data.
+- Geometry/material authority is configs/geometry_spec.yaml. Do not invent
+  physical parameters or silently replace unresolved facts. The later
+  validation verifies para; r1 provenance is not established.
+- Preserve experiment configurations, thresholds, source hashes and historical
+  evidence. Never retune a gate after observing its result.
+- Existing manifests include absolute paths and exact-byte hashes. Do not
+  normalize or rewrite protected files; new experiments need separate outputs.
+- Use float64/complex128 for physics. CPU tests must work without a GPU.
+- Report signed sampled-path gaps, not claims of full-zone or continuum gaps.
+- Numerical summaries must be generated from saved JSON by scripts. Preserve
+  failed PWE experiments; do not present them as successful or omit their role.
+- Inverse response matching does not establish unique geometry, unrestricted
+  topology optimization, global reachability or fabrication robustness.
+- The RBF atlas interpolates PWE samples only and proposes starts; fresh physics
+  accepts candidates. Keep COMSOL reference comparisons separate.
+- Splits, where needed for saved-library/atlas checks, are by whole geometry,
+  never individual k rows.
+- Stop for unexplained existing-test failures, failed new scientific gates,
+  missing physical specifications or new dependencies requiring approval.
 
-## Hard rules (never violate)
-1. **Never call COMSOL, never edit `data/raw/`.** Raw CSVs are read-only and git-ignored. All work starts from `data/processed/bands.npz`.
-2. **Never invent physical facts.** Geometry shape, materials (ε), polarisation, lattice orientation and the k-path definition come from `configs/geometry_spec.yaml`, filled by a human. If a field is empty or `TODO`, **stop and ask**. You may *test hypotheses* against data (PLAN tickets say where), but a fitted value is reported as "fitted", never as "known".
-3. **Never split by k-point or row.** Splits are by design only (LODO, checkerboard, edge-out, blind). All models use identical splits from `src/invdes/splits.py`.
-4. **Thresholds are pre-registered.** Pass/fail numbers live in `configs/criteria.yaml`, committed before the experiments they judge. Do not edit them after seeing results. If you think one is wrong, write the argument in `reports/` and ask.
-5. **No hand-typed numbers in reports.** Every number in `reports/*.md` and figures is generated from `results/*.json` by a script. Negative or contradicting results are recorded, not hidden or re-tuned away.
-6. **No unverified claims.** Do not write "novel", "state-of-the-art", "exact" or similar in code, docs or reports. Report measured numbers and let the human decide wording.
-7. **Stop conditions.** Stop and ask the human when: a gate in `PLAN.md` fails; a test you did not write fails and the cause is unclear; you need a new dependency; a result contradicts a claim in `PHYSICS_INFORMED_INVERSE_DESIGN_PROPOSAL.md`.
+## Engineering
+- Package: src/invdes; launchers/audits: scripts; complete maintained suite: tests.
+- Declared runtime: NumPy, SciPy, PyTorch and PyYAML. pytest is the test extra.
+  Do not add scikit-learn, pandas, polars or ML frameworks.
+- Preserve deterministic seed conventions via invdes.utils.set_seed.
+- Run make test (or its identical python -m pytest tests/ -v command) before
+  every commit. The complete maintained physics suite must pass, not a subset.
+- Keep source and acceptance results separate. Use new paths for new runs.
+- User changes and untracked research evidence must be preserved. Cleanup
+  removals need a recoverable copy and explicit inventory.
+- Commit messages use a ticket prefix; T6.2 covers this publication preparation.
 
-## Engineering conventions
-- Python ≥ 3.10, PyTorch (float64 for all physics code), NumPy, SciPy, scikit-learn, pandas/polars, matplotlib, pytest. Add nothing else without asking. Pin versions in `pyproject.toml` and `requirements.lock`.
-- CPU-first. GPU is optional behind `--device`. Nothing may require a GPU to pass tests.
-- Seeds: `set_seed(s)` from `src/invdes/utils.py` at every entry point; default seeds `[0,1,2]`; report mean ± std over seeds for any stochastic model.
-- Package: `src/invdes/`. Scripts in `scripts/` are thin wrappers (argparse + call library). Config via YAML in `configs/`, no magic constants in code.
-- Every module gets tests in `tests/`. Run `make test` before every commit; it must pass. Keep commits small: one ticket = one commit or PR, message `T<id>: <summary>`.
-- If the repo already has Phase 1–4 code (aggregation, GP-on-PCA, MLP, inverse engine), **reuse and wrap it; do not rewrite it**. Ticket T0.1 maps the existing code.
+## Reference data and metrics
+data/processed/bands.npz stores F with shape (2,8,8,281,2), GHz; load as float64.
+L1 labels are 140..189 um, L2 labels 91..140 um. The sampled path is
+0.10..2.90 at 0.01 increments, with two frequency-sorted bands.
+The precise PWE bounds use the physical multipliers in the experiment config,
+not silently rounded reference labels.
 
-## Data contract (single source of truth)
-`data/processed/bands.npz` contains:
-- `F` float64 `(2, 8, 8, 281, 2)` = `[structure, i1, i2, ik, band]` in **GHz**, bands sorted by frequency; structure 0 = `para`, 1 = `r1`
-- `L1_um` `(8,)` = 140…189 step 7; `L2_um` `(8,)` = 91…140 step 7; `k` `(281,)` = 0.10…2.90 step 0.01
-If an existing file has more than 2 band slots, slice `[..., :2]` and note it.
-
-## Metrics contract (`src/invdes/metrics.py`, used by everything)
-- Pointwise: MAE, RMSE, max error over (designs, k), per band, in GHz and in % of f.
-- Band-gap features per design: `f1_max = max_k f1`, `f2_min = min_k f2`, `path_gap = f2_min − f1_max` (signed, not clipped), `mid = (f2_min + f1_max)/2`. Report absolute errors of `mid` and `path_gap`.
-- Group velocity: `dω/dk` by central difference in k; **exclude the 2 samples either side of the kink indices** (k = 1.0 and 2.0 → ik = 90, 190; verify in T0.2). Report RMS error.
-- Always report the same metric set for every model on every split.
-
-## Definition of done for any ticket
-1. Code + tests merged, `make test` green. 2. Output artefacts exist at the paths named in the ticket. 3. Acceptance checks in the ticket pass, **or** the failure is written up in `reports/` and you have stopped for the human. 4. `reports/<ticket>.md` generated by script.
+gap = min_k(f2) - max_k(f1), signed; mid = (min_k(f2) + max_k(f1))/2.
+Report pointwise MAE/RMSE/max, gap/mid errors and path-frequency slope errors.
+Exclude two neighbors either side of path kinks at indices 90 and 190 for
+slope metrics. A path derivative is not automatically SI group velocity.

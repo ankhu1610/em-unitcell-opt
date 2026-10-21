@@ -1,0 +1,22 @@
+{
+  "description": "Preregistered deterministic multi-start reliability extension of the existing anchor-free pure-PWE experiment. Only requested targets and initial geometries vary; no physics, optimizer, or acceptance threshold changes.",
+  "base_config": "configs/pure_pwe_math_inverse_v1.json",
+  "targets_GHz": [7.5, 15.0, 22.5, 27.5],
+  "starts": [
+    {"id": "center", "normalized_x": [0.5, 0.5]},
+    {"id": "low_l1_high_l2", "normalized_x": [0.1, 0.9]},
+    {"id": "high_l1_low_l2", "normalized_x": [0.9, 0.1]}
+  ],
+  "case_order": "target-major Cartesian product, starts in listed order",
+  "max_runtime_hours": 4,
+  "target_selection": "Four prescribed gap widths selected before any new physics evaluations, not copied from historical geometry responses.",
+  "starting_point_selection": "Center and two opposite off-boundary starts in the existing normalized parameter box; no saved inverse solutions.",
+  "acceptance": "Search must match the unchanged internal tolerance, and the unchanged candidate must pass both the existing M25 error tolerance and error-plus-cutoff-change guard. Record every attempt, including nonmatches.",
+  "checkpoint_reuse": "Only identical checked evaluations computed within this new experiment; no historical response tables or candidate anchors.",
+  "saved_anchors_used": false,
+  "ml_training": false,
+  "comsol_spectra_used": false,
+  "comsol_fitting": false,
+  "production_solver_replacement": false,
+  "scope": "Exploratory sampled-path gap recovery from three deterministic starts, not a statistical population estimate, unique inverse, full-Brillouin-zone certificate, or proof of global feasibility."
+}

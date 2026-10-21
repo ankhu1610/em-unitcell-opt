@@ -1,0 +1,61 @@
+{
+  "description": "Preregistered implementation-only anchor-free mathematical inverse prototype. Do not launch PWE searches until the explicit audit gate is reviewed.",
+  "targets_GHz": [10.0, 20.0, 30.0],
+  "a_um": 242.5,
+  "eps_background": 9,
+  "eps_hole": 1,
+  "geometry": "para: fixed-center oppositely oriented disk-clipped equilateral triangles",
+  "side_multiplier_bounds": [[1.0, 1.35], [0.65, 1.0]],
+  "side_scale": "b=a_um/sqrt(3)",
+  "initial_side_multipliers": [1.175, 0.825],
+  "initial_normalized_x": [0.5, 0.5],
+  "projector": "fixed homothetic radial extension, direct Fourier quadrature",
+  "projector_quadrature_order": 128,
+  "material_arc_order": 64,
+  "search_cutoff": 20,
+  "independent_check_cutoff": 25,
+  "full_path_start": 0.1,
+  "full_path_step": 0.01,
+  "full_path_count": 281,
+  "internal_tolerance_GHz": 0.01,
+  "final_tolerance_source": "configs/pure_pwe_inverse.json",
+  "final_tolerance_key": "gap_tolerance_ghz",
+  "final_refinement_checks": [
+    "Report abs(G20-target), abs(G25-target), abs(G25-G20) separately.",
+    "Report whether abs(G20-target)+abs(G25-G20) is within the unchanged existing final tolerance.",
+    "M25 is an independent check of the same geometry, not a correction fitted to the target or any COMSOL result.",
+    "A two-cutoff agreement is an empirical check, not a certified continuum error bound."
+  ],
+  "near_degenerate_relative_separation": 1e-6,
+  "near_tied_edge_tolerance_GHz": 1e-4,
+  "gradient_reliability_policy": "Reliable only after the caller checks simple edge modes, active-k uniqueness or justified equal edge sensitivities, and finite analytic gradients; otherwise bounded coordinate polling.",
+  "trust_region": {
+    "initial_radius": 0.1,
+    "maximum_radius": 0.25,
+    "minimum_radius": 0.0001,
+    "acceptance_ratio": 0.1,
+    "shrink_ratio": 0.25,
+    "expand_ratio": 0.75,
+    "gradient_norm_floor": 1e-8,
+    "rejected_models_before_poll": 2,
+    "max_trial_evaluations": 12,
+    "initial_evaluation_additional": true,
+    "poll_order": ["x1+", "x1-", "x2+", "x2-"],
+    "poll_acceptance": "first strict residual improvement"
+  },
+  "launch_gate": {
+    "status": "not_authorized_by_this_config",
+    "required": [
+      "Root reviews radial direct-quadrature analytic versus finite-difference sensitivities.",
+      "Root reviews full-path frequency and gap convergence across quadrature orders and Fourier cutoffs.",
+      "Root explicitly decides that the new evaluator is suitable for a separate exploratory inverse run within the user-authorized research time.",
+      "Old validated solver, old inverse engine, and historical results remain unchanged."
+    ]
+  },
+  "saved_anchors_used": false,
+  "ml_training": false,
+  "comsol_spectra_used": false,
+  "comsol_fitting": false,
+  "production_solver_replacement": false,
+  "scope": "Three positive sampled-path-gap requests, one fixed off-grid nominal start; deterministic local minimum-norm steps do not establish uniqueness, global reachability, or full-Brillouin-zone gaps."
+}

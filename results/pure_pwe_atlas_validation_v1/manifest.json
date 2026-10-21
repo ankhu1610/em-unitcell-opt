@@ -1,0 +1,142 @@
+{
+  "experiment_version": "pure_pwe_atlas_validation_v1",
+  "config": {
+    "description": "Map-derived local inverse validation. Each target starts from a deterministic v2-atlas contour proposal, then uses the unchanged M20 trust-region search and same-geometry independent M25 check.",
+    "base_config": "configs/pure_pwe_math_inverse_v1.json",
+    "atlas_source": "results/pure_pwe_response_atlas_v2",
+    "multistart_source": "results/pure_pwe_multistart_v1",
+    "output_directory": "results/pure_pwe_atlas_validation_v1",
+    "targets_GHz": [
+      7.5,
+      15.0,
+      22.5,
+      27.5
+    ],
+    "selection_grid_size": 81,
+    "minimum_distance_from_prior_M25": 0.075,
+    "minimum_distance_between_selected_starts": 0.08,
+    "max_runtime_hours": 2,
+    "scope": "Exploratory local validation of map-proposed starts. Successful local searches do not establish a unique inverse, global reachability, full-Brillouin-zone gaps, continuum convergence, or PWE-COMSOL agreement.",
+    "comsol_used": false,
+    "ml_training": false,
+    "continuum_accuracy_certified": false
+  },
+  "effective_forward_config": {
+    "description": "Preregistered implementation-only anchor-free mathematical inverse prototype. Do not launch PWE searches until the explicit audit gate is reviewed.",
+    "targets_GHz": [
+      10.0,
+      20.0,
+      30.0
+    ],
+    "a_um": 242.5,
+    "eps_background": 9,
+    "eps_hole": 1,
+    "geometry": "para: fixed-center oppositely oriented disk-clipped equilateral triangles",
+    "side_multiplier_bounds": [
+      [
+        1.0,
+        1.35
+      ],
+      [
+        0.65,
+        1.0
+      ]
+    ],
+    "side_scale": "b=a_um/sqrt(3)",
+    "initial_side_multipliers": [
+      1.175,
+      0.825
+    ],
+    "initial_normalized_x": [
+      0.5,
+      0.5
+    ],
+    "projector": "fixed homothetic radial extension, direct Fourier quadrature",
+    "projector_quadrature_order": 128,
+    "material_arc_order": 64,
+    "search_cutoff": 20,
+    "independent_check_cutoff": 25,
+    "full_path_start": 0.1,
+    "full_path_step": 0.01,
+    "full_path_count": 281,
+    "internal_tolerance_GHz": 0.01,
+    "final_tolerance_source": "configs/pure_pwe_inverse.json",
+    "final_tolerance_key": "gap_tolerance_ghz",
+    "final_refinement_checks": [
+      "Report abs(G20-target), abs(G25-target), abs(G25-G20) separately.",
+      "Report whether abs(G20-target)+abs(G25-G20) is within the unchanged existing final tolerance.",
+      "M25 is an independent check of the same geometry, not a correction fitted to the target or any COMSOL result.",
+      "A two-cutoff agreement is an empirical check, not a certified continuum error bound."
+    ],
+    "near_degenerate_relative_separation": 1e-06,
+    "near_tied_edge_tolerance_GHz": 0.0001,
+    "gradient_reliability_policy": "Reliable only after the caller checks simple edge modes, active-k uniqueness or justified equal edge sensitivities, and finite analytic gradients; otherwise bounded coordinate polling.",
+    "trust_region": {
+      "initial_radius": 0.1,
+      "maximum_radius": 0.25,
+      "minimum_radius": 0.0001,
+      "acceptance_ratio": 0.1,
+      "shrink_ratio": 0.25,
+      "expand_ratio": 0.75,
+      "gradient_norm_floor": 1e-08,
+      "rejected_models_before_poll": 2,
+      "max_trial_evaluations": 12,
+      "initial_evaluation_additional": true,
+      "poll_order": [
+        "x1+",
+        "x1-",
+        "x2+",
+        "x2-"
+      ],
+      "poll_acceptance": "first strict residual improvement"
+    },
+    "launch_gate": {
+      "status": "not_authorized_by_this_config",
+      "required": [
+        "Root reviews radial direct-quadrature analytic versus finite-difference sensitivities.",
+        "Root reviews full-path frequency and gap convergence across quadrature orders and Fourier cutoffs.",
+        "Root explicitly decides that the new evaluator is suitable for a separate exploratory inverse run within the user-authorized research time.",
+        "Old validated solver, old inverse engine, and historical results remain unchanged."
+      ]
+    },
+    "saved_anchors_used": false,
+    "ml_training": false,
+    "comsol_spectra_used": false,
+    "comsol_fitting": false,
+    "production_solver_replacement": false,
+    "scope": "Three positive sampled-path-gap requests, one fixed off-grid nominal start; deterministic local minimum-norm steps do not establish uniqueness, global reachability, or full-Brillouin-zone gaps."
+  },
+  "source_hashes": {
+    "E:\\Inverse design dataset for lakshya and ankit\\Tushar\\results\\pure_pwe_response_atlas_v2\\results.json": "969a35d7edeaf385623950896830722d29bf1688298ca68629135b9901353948",
+    "E:\\Inverse design dataset for lakshya and ankit\\Tushar\\results\\pure_pwe_response_atlas_v2\\manifest.json": "2c45dcc5cf95c1c7e07e4049b90ffda1f172800efbbc6c3ab08a5b43ca32b1e0",
+    "E:\\Inverse design dataset for lakshya and ankit\\Tushar\\results\\pure_pwe_multistart_v1\\results.json": "8fcc828b1d1dc23822e35fd0512842c14031ef4337a996e704fae32da2958a54",
+    "E:\\Inverse design dataset for lakshya and ankit\\Tushar\\results\\pure_pwe_multistart_v1\\manifest.json": "401f75379ca12eb9dfa64acb345fedc42df12acefddad7d7254593c3d0ba904c",
+    "E:\\Inverse design dataset for lakshya and ankit\\Tushar\\results\\pure_pwe_response_atlas_v1\\results.json": "93c74b7def6f41d276dd70daf01d80549fda9e6824b9538ea10215e5c2e2be13",
+    "E:\\Inverse design dataset for lakshya and ankit\\Tushar\\results\\pure_pwe_response_atlas_v1\\manifest.json": "5cc1447c0cc9b79430eae6cd434d931ac3f3ec46d6d37e7a41297c362c7c8440"
+  },
+  "atlas_starts_normalized": [
+    [
+      0.21250000000000002,
+      0.5125000000000001
+    ],
+    [
+      0.5,
+      0.7625000000000001
+    ],
+    [
+      0.5375,
+      0.125
+    ],
+    [
+      0.7875000000000001,
+      0.5875
+    ]
+  ],
+  "runtime": {
+    "dtype": "float64/complex128",
+    "allowed_backends": [
+      "cpu",
+      "cuda"
+    ]
+  }
+}

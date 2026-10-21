@@ -1,0 +1,27 @@
+{
+  "description": "Bounded adaptive sampled-path-gap atlas. The completed pure-PWE multistart experiment supplies M20 seed observations; new points use the unchanged full-path evaluator. Processed COMSOL data is a separately labelled reference layer only and is never used to fit or accept PWE candidates.",
+  "base_config": "configs/pure_pwe_math_inverse_v1.json",
+  "seed_experiment": "results/pure_pwe_multistart_v1",
+  "processed_comsol_data": "data/processed/bands.npz",
+  "structure_index": 0,
+  "structure_label": "para",
+  "targets_GHz": [7.5, 15.0, 22.5, 27.5],
+  "search_cutoff": 20,
+  "candidate_grid_size": 25,
+  "minimum_normalized_separation": 0.055,
+  "initial_coverage_evaluations": 8,
+  "pilot_new_evaluations": 12,
+  "maximum_new_evaluations": 48,
+  "max_runtime_hours": 2,
+  "surrogate": {
+    "kind": "thin_plate_rbf",
+    "smoothing": 0.02,
+    "target_proximity_GHz": 4.0,
+    "target_priority": 1.5
+  },
+  "scope": "Exploratory M20 sampled-path-gap mapping. The contour is an interpolated proposal aid, not a PWE certificate, an M25 validation, a full-Brillouin-zone result, or a COMSOL-calibrated model.",
+  "ml_training": false,
+  "comsol_used_for_pwe_fit": false,
+  "comsol_used_as_reference_only": true,
+  "continuum_accuracy_certified": false
+}

@@ -1,0 +1,5224 @@
+{
+  "identity": {
+    "scientific_fingerprint": "53b24c7f30cdd04d73d342d5edba2a518ec9412c204ff29d07b5c814db5f1558",
+    "config": {
+      "description": "Preregistered implementation-only anchor-free mathematical inverse prototype. Do not launch PWE searches until the explicit audit gate is reviewed.",
+      "targets_GHz": [
+        10.0,
+        20.0,
+        30.0
+      ],
+      "a_um": 242.5,
+      "eps_background": 9,
+      "eps_hole": 1,
+      "geometry": "para: fixed-center oppositely oriented disk-clipped equilateral triangles",
+      "side_multiplier_bounds": [
+        [
+          1.0,
+          1.35
+        ],
+        [
+          0.65,
+          1.0
+        ]
+      ],
+      "side_scale": "b=a_um/sqrt(3)",
+      "initial_side_multipliers": [
+        1.175,
+        0.825
+      ],
+      "initial_normalized_x": [
+        0.5,
+        0.5
+      ],
+      "projector": "fixed homothetic radial extension, direct Fourier quadrature",
+      "projector_quadrature_order": 128,
+      "material_arc_order": 64,
+      "search_cutoff": 20,
+      "independent_check_cutoff": 25,
+      "full_path_start": 0.1,
+      "full_path_step": 0.01,
+      "full_path_count": 281,
+      "internal_tolerance_GHz": 0.01,
+      "final_tolerance_source": "configs/pure_pwe_inverse.json",
+      "final_tolerance_key": "gap_tolerance_ghz",
+      "final_refinement_checks": [
+        "Report abs(G20-target), abs(G25-target), abs(G25-G20) separately.",
+        "Report whether abs(G20-target)+abs(G25-G20) is within the unchanged existing final tolerance.",
+        "M25 is an independent check of the same geometry, not a correction fitted to the target or any COMSOL result.",
+        "A two-cutoff agreement is an empirical check, not a certified continuum error bound."
+      ],
+      "near_degenerate_relative_separation": 1e-06,
+      "near_tied_edge_tolerance_GHz": 0.0001,
+      "gradient_reliability_policy": "Reliable only after the caller checks simple edge modes, active-k uniqueness or justified equal edge sensitivities, and finite analytic gradients; otherwise bounded coordinate polling.",
+      "trust_region": {
+        "initial_radius": 0.1,
+        "maximum_radius": 0.25,
+        "minimum_radius": 0.0001,
+        "acceptance_ratio": 0.1,
+        "shrink_ratio": 0.25,
+        "expand_ratio": 0.75,
+        "gradient_norm_floor": 1e-08,
+        "rejected_models_before_poll": 2,
+        "max_trial_evaluations": 12,
+        "initial_evaluation_additional": true,
+        "poll_order": [
+          "x1+",
+          "x1-",
+          "x2+",
+          "x2-"
+        ],
+        "poll_acceptance": "first strict residual improvement"
+      },
+      "launch_gate": {
+        "status": "not_authorized_by_this_config",
+        "required": [
+          "Root reviews radial direct-quadrature analytic versus finite-difference sensitivities.",
+          "Root reviews full-path frequency and gap convergence across quadrature orders and Fourier cutoffs.",
+          "Root explicitly decides that the new evaluator is suitable for a separate exploratory inverse run within the user-authorized research time.",
+          "Old validated solver, old inverse engine, and historical results remain unchanged."
+        ]
+      },
+      "saved_anchors_used": false,
+      "ml_training": false,
+      "comsol_spectra_used": false,
+      "comsol_fitting": false,
+      "production_solver_replacement": false,
+      "scope": "Three positive sampled-path-gap requests, one fixed off-grid nominal start; deterministic local minimum-norm steps do not establish uniqueness, global reachability, or full-Brillouin-zone gaps."
+    },
+    "cutoff": 20,
+    "normalized_x_hex": [
+      "0x1.3333333333334p-1",
+      "0x1.4fe41db7d9694p-2"
+    ],
+    "evaluator": "fixed-radial-direct-quadrature-v1"
+  },
+  "identity_hash": "0810a07d7f5878d4d03d5f8c1b909951f2617e510d5ef9fca09ddc5af0e98624",
+  "frequencies_GHz": [
+    [
+      30.149887248561434,
+      498.66047303743835
+    ],
+    [
+      33.163403359602285,
+      498.0844217157933
+    ],
+    [
+      36.176493666351625,
+      497.45894368430197
+    ],
+    [
+      39.18911712723102,
+      496.78515878820826
+    ],
+    [
+      42.20123205905781,
+      496.0641537454075
+    ],
+    [
+      45.2127960886936,
+      495.29696238503305
+    ],
+    [
+      48.22376607640907,
+      494.4845478298244
+    ],
+    [
+      51.2340980522809,
+      493.62778688323215
+    ],
+    [
+      54.2437471443596,
+      492.7274568300203
+    ],
+    [
+      57.25266749707137,
+      491.78422482610125
+    ],
+    [
+      60.26081219974603,
+      490.7986400301367
+    ],
+    [
+      63.26813319964397,
+      489.7711286183738
+    ],
+    [
+      66.27458120530284,
+      488.7019918195928
+    ],
+    [
+      69.28010560450589,
+      487.5914070988347
+    ],
+    [
+      72.28465435523063,
+      486.4394326066059
+    ],
+    [
+      75.28817388240272,
+      485.2460149831688
+    ],
+    [
+      78.29060896373534,
+      484.01100055544646
+    ],
+    [
+      81.29190260876032,
+      482.734149890813
+    ],
+    [
+      84.29199592755455,
+      481.41515556092673
+    ],
+    [
+      87.29082799440228,
+      480.0536628345263
+    ],
+    [
+      90.28833569669892,
+      478.64929285230687
+    ],
+    [
+      93.28445357373536,
+      477.20166766129523
+    ],
+    [
+      96.27911364770081,
+      475.7104363121544
+    ],
+    [
+      99.27224523313912,
+      474.17530106937215
+    ],
+    [
+      102.26377474000394,
+      472.59604268333726
+    ],
+    [
+      105.25362545236345,
+      470.97254363293587
+    ],
+    [
+      108.24171729643301,
+      469.3048082967226
+    ],
+    [
+      111.22796658259774,
+      467.59297914442897
+    ],
+    [
+      114.21228572815183,
+      465.8373482588047
+    ],
+    [
+      117.19458295583411,
+      464.03836377997595
+    ],
+    [
+      120.17476196426698,
+      462.196631178224
+    ],
+    [
+      123.15272156702193,
+      460.3129095808023
+    ],
+    [
+      126.12835530091296,
+      458.3881036592122
+    ],
+    [
+      129.1015509947319,
+      456.4232518069958
+    ],
+    [
+      132.07219029670642,
+      454.41951148615055
+    ],
+    [
+      135.0401481551482,
+      452.37814267717334
+    ],
+    [
+      138.00529224803273,
+      450.3004903588087
+    ],
+    [
+      140.96748235352288,
+      448.1879668569182
+    ],
+    [
+      143.9265696524954,
+      446.04203478292374
+    ],
+    [
+      146.8823959623758,
+      443.86419112994474
+    ],
+    [
+      149.83479288224913,
+      441.6559529407368
+    ],
+    [
+      152.78358084870626,
+      439.4188448117739
+    ],
+    [
+      155.72856808122157,
+      437.15438836979087
+    ],
+    [
+      158.66954941170064,
+      434.8640937505487
+    ],
+    [
+      161.60630497254985,
+      432.5494530278216
+    ],
+    [
+      164.53859873374634,
+      430.2119354875061
+    ],
+    [
+      167.4661768601331,
+      427.8529846056356
+    ],
+    [
+      170.38876586596083,
+      425.47401657246286
+    ],
+    [
+      173.3060705401143,
+      423.0764202090774
+    ],
+    [
+      176.21777160128636,
+      420.6615581244234
+    ],
+    [
+      179.12352305116445,
+      418.23076898527086
+    ],
+    [
+      182.02294917071362,
+      415.7853707897472
+    ],
+    [
+      184.91564111120275,
+      413.3266650635952
+    ],
+    [
+      187.80115301143945,
+      410.85594192285635
+    ],
+    [
+      190.6789975658017,
+      408.37448597981574
+    ],
+    [
+      193.5486409528094,
+      405.88358309712737
+    ],
+    [
+      196.4094970193961,
+      403.38452802708883
+    ],
+    [
+      199.26092058970355,
+      400.87863300510725
+    ],
+    [
+      202.1021997510363,
+      398.3672374047436
+    ],
+    [
+      204.932546936825,
+      395.85171859753274
+    ],
+    [
+      207.75108859016865,
+      393.33350420488296
+    ],
+    [
+      210.55685315038326,
+      390.814085978485
+    ],
+    [
+      213.34875705824032,
+      388.29503560256967
+    ],
+    [
+      216.12558840667938,
+      385.77802277439537
+    ],
+    [
+      218.88598779824508,
+      383.26483599906067
+    ],
+    [
+      221.62842587939443,
+      380.7574066244774
+    ],
+    [
+      224.35117691554527,
+      378.2578367437526
+    ],
+    [
+      227.0522876581738,
+      375.7684317232564
+    ],
+    [
+      229.7295406067274,
+      373.2917382473943
+    ],
+    [
+      232.38041061161238,
+      370.83058893660393
+    ],
+    [
+      235.00201360118157,
+      368.3881547609338
+    ],
+    [
+      237.59104603027745,
+      365.9680066514699
+    ],
+    [
+      240.1437135021546,
+      363.5741878631971
+    ],
+    [
+      242.65564690671286,
+      361.2112987473156
+    ],
+    [
+      245.12180444608032,
+      358.88459557009344
+    ],
+    [
+      247.53635815080466,
+      356.60010477023536
+    ],
+    [
+      249.89256414369967,
+      354.36475341179676
+    ],
+    [
+      252.18261717958987,
+      352.1865152966022
+    ],
+    [
+      254.39749230507627,
+      350.0745699036379
+    ],
+    [
+      256.52678029437004,
+      348.03946749765447
+    ],
+    [
+      258.55852945597053,
+      346.09328781609355
+    ],
+    [
+      260.4791150373329,
+      344.24977110976744
+    ],
+    [
+      262.273169039751,
+      342.5243887272163
+    ],
+    [
+      263.92361708276127,
+      340.9343066063147
+    ],
+    [
+      265.41188237558026,
+      339.49818161426737
+    ],
+    [
+      266.71832411703855,
+      338.2357234215058
+    ],
+    [
+      267.8229693337284,
+      337.1669628959215
+    ],
+    [
+      268.70656202670443,
+      336.31120315195125
+    ],
+    [
+      269.3518843310154,
+      335.68569854899715
+    ],
+    [
+      269.7452082235759,
+      335.3042031067828
+    ],
+    [
+      269.87764278785744,
+      335.17562332678324
+    ],
+    [
+      269.88361383060226,
+      335.1783443908974
+    ],
+    [
+      269.9015257640684,
+      335.1865066734732
+    ],
+    [
+      269.9313750035889,
+      335.20010744303585
+    ],
+    [
+      269.97315557492465,
+      335.2191421411929
+    ],
+    [
+      270.0268591131636,
+      335.24360437209947
+    ],
+    [
+      270.09247486246676,
+      335.27348588909587
+    ],
+    [
+      270.1699896751137,
+      335.3087765769422
+    ],
+    [
+      270.25938801037444,
+      335.3494644297055
+    ],
+    [
+      270.3606519329271,
+      335.3955355246658
+    ],
+    [
+      270.47376111113084,
+      335.4469739914515
+    ],
+    [
+      270.5986928149281,
+      335.50376197755105
+    ],
+    [
+      270.7354219120206,
+      335.5658796072752
+    ],
+    [
+      270.88392086580063,
+      335.6333049379167
+    ],
+    [
+      271.0441597303494,
+      335.7060139090679
+    ],
+    [
+      271.21610614516123,
+      335.7839802870785
+    ],
+    [
+      271.39972532970387,
+      335.86717560390457
+    ],
+    [
+      271.59498007604356,
+      335.95556908923896
+    ],
+    [
+      271.80183074040394,
+      336.04912759677734
+    ],
+    [
+      272.0202352334207,
+      336.1478155232815
+    ],
+    [
+      272.250149008897,
+      336.2515947199624
+    ],
+    [
+      272.4915250498523,
+      336.36042439645706
+    ],
+    [
+      272.74431385430006,
+      336.4742610161704
+    ],
+    [
+      273.00846341632234,
+      336.5930581824965
+    ],
+    [
+      273.2839192069998,
+      336.7167665154304
+    ],
+    [
+      273.57062415086733,
+      336.845333517488
+    ],
+    [
+      273.8685185998298,
+      336.9787034288963
+    ],
+    [
+      274.1775403032309,
+      337.11681706967346
+    ],
+    [
+      274.497624374641,
+      337.2596116700352
+    ],
+    [
+      274.8287032528996,
+      337.4070206848235
+    ],
+    [
+      275.17070666105,
+      337.5589735946649
+    ],
+    [
+      275.5235615564657,
+      337.7153956885406
+    ],
+    [
+      275.88719207833634,
+      337.87620783032907
+    ],
+    [
+      276.26151948639546,
+      338.0413262040421
+    ],
+    [
+      276.6464620939832,
+      338.21066203986186
+    ],
+    [
+      277.0419351924773,
+      338.38412131562677
+    ],
+    [
+      277.4478509676873,
+      338.5616044350103
+    ],
+    [
+      277.8641184052548,
+      338.7430058774048
+    ],
+    [
+      278.29064318803637,
+      338.9282138201851
+    ],
+    [
+      278.7273275792413,
+      339.1171097279589
+    ],
+    [
+      279.1740702932137,
+      339.30956790762383
+    ],
+    [
+      279.6307663545033,
+      339.5054550278
+    ],
+    [
+      280.0973069370166,
+      339.70462959532006
+    ],
+    [
+      280.5735791894463,
+      339.9069413902285
+    ],
+    [
+      281.0594660385105,
+      340.11223085163823
+    ],
+    [
+      281.5548459732903,
+      340.32032841430004
+    ],
+    [
+      282.0595928040806,
+      340.5310537879312
+    ],
+    [
+      282.5735753952632,
+      340.7442151785388
+    ],
+    [
+      283.0966573690386,
+      340.95960844477213
+    ],
+    [
+      283.6286967769026,
+      341.17701618662807
+    ],
+    [
+      284.16954573365314,
+      341.39620675952983
+    ],
+    [
+      284.71905001138407,
+      341.61693321181497
+    ],
+    [
+      285.27704858878894,
+      341.8389321391551
+    ],
+    [
+      285.84337314838325,
+      342.06192245190505
+    ],
+    [
+      286.41784751766477,
+      342.2856040527088
+    ],
+    [
+      287.000287046814,
+      342.50965642089244
+    ],
+    [
+      287.5904979138218,
+      342.7337371013782
+    ],
+    [
+      288.18827635041146,
+      342.95748009963023
+    ],
+    [
+      288.79340777634155,
+      343.18049418414523
+    ],
+    [
+      289.4056658315863,
+      343.4023611015614
+    ],
+    [
+      290.02481129407664,
+      343.6226337163906
+    ],
+    [
+      290.65059086566436,
+      343.84083408770783
+    ],
+    [
+      291.28273581194014,
+      344.0564515075976
+    ],
+    [
+      291.920960433116,
+      344.26894053062153
+    ],
+    [
+      292.5649603464866,
+      344.4777190385548
+    ],
+    [
+      293.21441055241905,
+      344.68216639549576
+    ],
+    [
+      293.8689632560512,
+      344.8816217686591
+    ],
+    [
+      294.52824540736117,
+      345.07538270818395
+    ],
+    [
+      295.1918559274578,
+      345.2627041107545
+    ],
+    [
+      295.8593625696245,
+      345.44279771465375
+    ],
+    [
+      296.5302983687758,
+      345.6148323169855
+    ],
+    [
+      297.2041576210801,
+      345.7779349414751
+    ],
+    [
+      297.88039132629524,
+      345.93119323203285
+    ],
+    [
+      298.5584020227668,
+      346.0736594008039
+    ],
+    [
+      299.2375379272001,
+      346.20435610877513
+    ],
+    [
+      299.9170862899426,
+      346.32228471351993
+    ],
+    [
+      300.59626586117383,
+      346.426436363839
+    ],
+    [
+      301.27421835770735,
+      346.51580646064605
+    ],
+    [
+      301.9499988100337,
+      346.58941301716436
+    ],
+    [
+      302.62256466709977,
+      346.64631944189586
+    ],
+    [
+      303.29076353562414,
+      346.6856622113605
+    ],
+    [
+      303.95331944041925,
+      346.70668379141756
+    ],
+    [
+      304.6088175166594,
+      346.7087709904181
+    ],
+    [
+      305.2556870826006,
+      346.6914986714512
+    ],
+    [
+      305.8921831140315,
+      346.6546784188971
+    ],
+    [
+      306.5163662482537,
+      346.59841133560593
+    ],
+    [
+      307.12608160352755,
+      346.5231436603665
+    ],
+    [
+      307.7189369290948,
+      346.42972335459416
+    ],
+    [
+      308.29228091159183,
+      346.3194552401081
+    ],
+    [
+      308.8431828787928,
+      346.1941517050852
+    ],
+    [
+      309.3684156674279,
+      346.05617546226495
+    ],
+    [
+      309.8644440487783,
+      345.9084703732135
+    ],
+    [
+      310.32742181796,
+      345.75457598549923
+    ],
+    [
+      310.75320134164934,
+      345.5986211978655
+    ],
+    [
+      311.13735992592376,
+      345.4452924934569
+    ],
+    [
+      311.4752475583566,
+      345.2997725757768
+    ],
+    [
+      311.76206013742916,
+      345.16764623028996
+    ],
+    [
+      311.99294091597204,
+      345.0547720680988
+    ],
+    [
+      312.16311030093993,
+      344.9671216630908
+    ],
+    [
+      312.2680203533592,
+      344.91059150418533
+    ],
+    [
+      312.3035256592168,
+      344.890797801022
+    ],
+    [
+      312.1537792677199,
+      344.9797951724388
+    ],
+    [
+      311.69380457420425,
+      345.2676758266714
+    ],
+    [
+      310.91935268065737,
+      345.77176643264136
+    ],
+    [
+      309.84089303559045,
+      346.4941253685773
+    ],
+    [
+      308.480460040557,
+      347.4242978745256
+    ],
+    [
+      306.86695057860555,
+      348.5438102953206
+    ],
+    [
+      305.0316267549894,
+      349.83059910601514
+    ],
+    [
+      303.004848915551,
+      351.2623021603277
+    ],
+    [
+      300.81421584430876,
+      352.8181970627523
+    ],
+    [
+      298.4838089401716,
+      354.48006234406137
+    ],
+    [
+      296.03412744623955,
+      356.23235621200354
+    ],
+    [
+      293.48237928445127,
+      358.0620373164068
+    ],
+    [
+      290.8429111956254,
+      359.95823781569004
+    ],
+    [
+      288.12765911235255,
+      361.91190504587104
+    ],
+    [
+      285.34656263752663,
+      363.9154671238204
+    ],
+    [
+      282.50792299499835,
+      365.96254345036886
+    ],
+    [
+      279.6187016945872,
+      368.0477037645617
+    ],
+    [
+      276.68476504292596,
+      370.1662717619702
+    ],
+    [
+      273.711082323063,
+      372.31416663597827
+    ],
+    [
+      270.7018857026931,
+      374.487775620594
+    ],
+    [
+      267.6607991346797,
+      376.68385131531227
+    ],
+    [
+      264.59094238909574,
+      378.8994285856939
+    ],
+    [
+      261.49501524552073,
+      381.1317568635783
+    ],
+    [
+      258.3753658732651,
+      383.3782445902841
+    ],
+    [
+      255.23404660465553,
+      385.63641333577664
+    ],
+    [
+      252.07285963063543,
+      387.9038597953474
+    ],
+    [
+      248.89339461713078,
+      390.17822443042354
+    ],
+    [
+      245.6970598180165,
+      392.457166013832
+    ],
+    [
+      242.48510793069843,
+      394.73834177404956
+    ],
+    [
+      239.25865768615344,
+      397.019393226839
+    ],
+    [
+      236.0187119561306,
+      399.29793811999457
+    ],
+    [
+      232.7661730101478,
+      401.5715691960877
+    ],
+    [
+      229.50185542749884,
+      403.83786064937067
+    ],
+    [
+      226.22649706573958,
+      406.09438316131593
+    ],
+    [
+      222.94076842211163,
+      408.3387281878536
+    ],
+    [
+      219.64528065096522,
+      410.56854166027364
+    ],
+    [
+      216.34059245586758,
+      412.78156642722786
+    ],
+    [
+      213.0272160377686,
+      414.97569162622165
+    ],
+    [
+      209.7056222459032,
+      417.1490058641369
+    ],
+    [
+      206.3762450510567,
+      419.29984983935225
+    ],
+    [
+      203.03948544664726,
+      421.4268631765881
+    ],
+    [
+      199.69571485899013,
+      423.5290201026283
+    ],
+    [
+      196.34527813728,
+      425.6056493690826
+    ],
+    [
+      192.98849618446744,
+      427.6564355117639
+    ],
+    [
+      189.6256682773858,
+      429.6814008553058
+    ],
+    [
+      186.257074118302,
+      431.68087010484277
+    ],
+    [
+      182.8829756540677,
+      433.65542141703935
+    ],
+    [
+      179.50361869376437,
+      435.60582906770577
+    ],
+    [
+      176.1192343498277,
+      437.5330031056874
+    ],
+    [
+      172.73004032502172,
+      439.43793079917583
+    ],
+    [
+      169.33624206443034,
+      441.32162353602666
+    ],
+    [
+      165.9380337907386,
+      443.1850714693832
+    ],
+    [
+      162.53559943329833,
+      445.0292069050296
+    ],
+    [
+      159.12911346565426,
+      446.8548763838818
+    ],
+    [
+      155.71874166146185,
+      448.6628206970701
+    ],
+    [
+      152.30464178070736,
+      450.4536616686548
+    ],
+    [
+      148.88696418819123,
+      452.22789439109437
+    ],
+    [
+      145.46585241782088,
+      453.9858836280893
+    ],
+    [
+      142.0414436846265,
+      455.72786322630947
+    ],
+    [
+      138.61386935231457,
+      457.4539375654371
+    ],
+    [
+      135.1832553591863,
+      459.1640842642008
+    ],
+    [
+      131.7497226099597,
+      460.85815754339217
+    ],
+    [
+      128.31338733101842,
+      462.53589180380163
+    ],
+    [
+      124.87436139977987,
+      464.19690510895373
+    ],
+    [
+      121.43275264685869,
+      465.84070236430205
+    ],
+    [
+      117.98866513215403,
+      467.4666780687088
+    ],
+    [
+      114.54219940177039,
+      469.0741185741182
+    ],
+    [
+      111.09345272549295,
+      470.66220383678865
+    ],
+    [
+      107.64251931510813,
+      472.23000868001617
+    ],
+    [
+      104.18949052613242,
+      473.77650361594664
+    ],
+    [
+      100.73445504801026,
+      475.30055529647314
+    ],
+    [
+      97.27749907891749,
+      476.8009266838542
+    ],
+    [
+      93.81870648713816,
+      478.27627704744845
+    ],
+    [
+      90.35815896600403,
+      479.725161912567
+    ],
+    [
+      86.89593617317573,
+      481.14603310275066
+    ],
+    [
+      83.43211586575934,
+      482.5372390355106
+    ],
+    [
+      79.96677402392307,
+      483.89702544955446
+    ],
+    [
+      76.49998496821976,
+      485.22353675929924
+    ],
+    [
+      73.03182146986967,
+      486.51481825145316
+    ],
+    [
+      69.56235485532378,
+      487.7688193522712
+    ],
+    [
+      66.09165510310329,
+      488.98339820898667
+    ],
+    [
+      62.619790935429734,
+      490.15632783410916
+    ],
+    [
+      59.14682991092417,
+      491.2853040630804
+    ],
+    [
+      55.67283850256236,
+      492.36795556362114
+    ],
+    [
+      52.19788217953909,
+      493.40185611339706
+    ],
+    [
+      48.72202548428761,
+      494.38453932339985
+    ],
+    [
+      45.24533210201759,
+      495.31351592789713
+    ],
+    [
+      41.767864934830186,
+      496.1862936854457
+    ],
+    [
+      38.28968616022933,
+      497.0003998410346
+    ],
+    [
+      34.81085730278523,
+      497.75340598460684
+    ]
+  ],
+  "point_diagnostics": [
+    {
+      "hermitian_defect": 5.416052084495616e-16,
+      "relative_eigenpair_residual": 2.613333794080377e-09,
+      "backward_residual": 4.788478270660375e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 0
+    },
+    {
+      "hermitian_defect": 5.416954702551756e-16,
+      "relative_eigenpair_residual": 2.3612276943327253e-09,
+      "backward_residual": 4.689422600213396e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 1
+    },
+    {
+      "hermitian_defect": 5.41829219399622e-16,
+      "relative_eigenpair_residual": 2.098924733214178e-09,
+      "backward_residual": 4.960304742140769e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 2
+    },
+    {
+      "hermitian_defect": 5.426009465378469e-16,
+      "relative_eigenpair_residual": 1.4204530894114313e-09,
+      "backward_residual": 3.986729615131371e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 3
+    },
+    {
+      "hermitian_defect": 5.408272423312343e-16,
+      "relative_eigenpair_residual": 1.2298361459597304e-09,
+      "backward_residual": 4.508936960201192e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 4
+    },
+    {
+      "hermitian_defect": 5.417250924782312e-16,
+      "relative_eigenpair_residual": 1.1785611111117232e-09,
+      "backward_residual": 4.350296987798078e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 5
+    },
+    {
+      "hermitian_defect": 5.406499179417957e-16,
+      "relative_eigenpair_residual": 1.110161983914241e-09,
+      "backward_residual": 4.818086804153221e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 6
+    },
+    {
+      "hermitian_defect": 5.430424501745157e-16,
+      "relative_eigenpair_residual": 1.039431574858829e-09,
+      "backward_residual": 4.926611963398991e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 7
+    },
+    {
+      "hermitian_defect": 5.413980689609316e-16,
+      "relative_eigenpair_residual": 8.247119644598912e-10,
+      "backward_residual": 4.381582301971472e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 8
+    },
+    {
+      "hermitian_defect": 5.410657240666286e-16,
+      "relative_eigenpair_residual": 7.168814997736178e-10,
+      "backward_residual": 4.733291653773809e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 9
+    },
+    {
+      "hermitian_defect": 5.412082663129977e-16,
+      "relative_eigenpair_residual": 6.995565240891431e-10,
+      "backward_residual": 5.068546572890524e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 10
+    },
+    {
+      "hermitian_defect": 5.407638781945677e-16,
+      "relative_eigenpair_residual": 5.658259165515618e-10,
+      "backward_residual": 4.609195032581844e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 11
+    },
+    {
+      "hermitian_defect": 5.412309110089495e-16,
+      "relative_eigenpair_residual": 5.835721392750937e-10,
+      "backward_residual": 4.628046871800914e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 12
+    },
+    {
+      "hermitian_defect": 5.416886400743921e-16,
+      "relative_eigenpair_residual": 5.327056209731078e-10,
+      "backward_residual": 4.616453611713922e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 13
+    },
+    {
+      "hermitian_defect": 5.414556661726301e-16,
+      "relative_eigenpair_residual": 4.764987802079714e-10,
+      "backward_residual": 4.495241148144355e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 14
+    },
+    {
+      "hermitian_defect": 5.402849881012383e-16,
+      "relative_eigenpair_residual": 4.2482106943530654e-10,
+      "backward_residual": 4.3815266563293174e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 15
+    },
+    {
+      "hermitian_defect": 5.406061072092421e-16,
+      "relative_eigenpair_residual": 4.152994286552807e-10,
+      "backward_residual": 4.690314884656359e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 16
+    },
+    {
+      "hermitian_defect": 5.41698422622504e-16,
+      "relative_eigenpair_residual": 3.5940857438054725e-10,
+      "backward_residual": 4.7131044444396e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 17
+    },
+    {
+      "hermitian_defect": 5.407555518278879e-16,
+      "relative_eigenpair_residual": 4.064200305404038e-10,
+      "backward_residual": 5.213458699464416e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 18
+    },
+    {
+      "hermitian_defect": 5.409985494072365e-16,
+      "relative_eigenpair_residual": 3.6028968897962186e-10,
+      "backward_residual": 4.956349638684271e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 19
+    },
+    {
+      "hermitian_defect": 5.402087500334965e-16,
+      "relative_eigenpair_residual": 3.102824524336822e-10,
+      "backward_residual": 4.566548497960584e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 20
+    },
+    {
+      "hermitian_defect": 5.410134086692193e-16,
+      "relative_eigenpair_residual": 2.8269224630323805e-10,
+      "backward_residual": 4.501536109436972e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 21
+    },
+    {
+      "hermitian_defect": 5.419721030814381e-16,
+      "relative_eigenpair_residual": 2.3306048114746007e-10,
+      "backward_residual": 3.9002249244744645e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 22
+    },
+    {
+      "hermitian_defect": 5.414670332894531e-16,
+      "relative_eigenpair_residual": 2.560694591376288e-10,
+      "backward_residual": 5.086913834729595e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 23
+    },
+    {
+      "hermitian_defect": 5.414341542802043e-16,
+      "relative_eigenpair_residual": 2.348240029835809e-10,
+      "backward_residual": 4.433351196440108e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 24
+    },
+    {
+      "hermitian_defect": 5.412760135528406e-16,
+      "relative_eigenpair_residual": 2.1742759096559263e-10,
+      "backward_residual": 4.983816011568553e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 25
+    },
+    {
+      "hermitian_defect": 5.410026166124369e-16,
+      "relative_eigenpair_residual": 2.0088628751669858e-10,
+      "backward_residual": 4.24888222173505e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 26
+    },
+    {
+      "hermitian_defect": 5.415750895146129e-16,
+      "relative_eigenpair_residual": 2.029152393607916e-10,
+      "backward_residual": 4.783461423570252e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 27
+    },
+    {
+      "hermitian_defect": 5.417282249562536e-16,
+      "relative_eigenpair_residual": 1.938493338824062e-10,
+      "backward_residual": 4.775595718538588e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 28
+    },
+    {
+      "hermitian_defect": 5.408047340074693e-16,
+      "relative_eigenpair_residual": 1.8822174006591466e-10,
+      "backward_residual": 4.975991608093291e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 29
+    },
+    {
+      "hermitian_defect": 5.417515816012296e-16,
+      "relative_eigenpair_residual": 1.65007313382496e-10,
+      "backward_residual": 4.480007307534691e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 30
+    },
+    {
+      "hermitian_defect": 5.412636748131923e-16,
+      "relative_eigenpair_residual": 1.708468032090216e-10,
+      "backward_residual": 4.735964835136182e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 31
+    },
+    {
+      "hermitian_defect": 5.419476767405947e-16,
+      "relative_eigenpair_residual": 1.6268784329072872e-10,
+      "backward_residual": 4.680955276971382e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 32
+    },
+    {
+      "hermitian_defect": 5.410397240562174e-16,
+      "relative_eigenpair_residual": 1.5266962244156863e-10,
+      "backward_residual": 4.871419330791434e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 33
+    },
+    {
+      "hermitian_defect": 5.414376037906333e-16,
+      "relative_eigenpair_residual": 1.426370994012073e-10,
+      "backward_residual": 4.598539457493142e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 34
+    },
+    {
+      "hermitian_defect": 5.41019879225624e-16,
+      "relative_eigenpair_residual": 1.31665245766007e-10,
+      "backward_residual": 4.604365654381983e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 35
+    },
+    {
+      "hermitian_defect": 5.415349074353891e-16,
+      "relative_eigenpair_residual": 1.2719360139058634e-10,
+      "backward_residual": 5.226311061354414e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 36
+    },
+    {
+      "hermitian_defect": 5.41767942954517e-16,
+      "relative_eigenpair_residual": 1.2923625820359927e-10,
+      "backward_residual": 4.635481746432367e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 37
+    },
+    {
+      "hermitian_defect": 5.401524024603384e-16,
+      "relative_eigenpair_residual": 1.2210149642170674e-10,
+      "backward_residual": 4.907551359299972e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 38
+    },
+    {
+      "hermitian_defect": 5.411825702083745e-16,
+      "relative_eigenpair_residual": 1.2420323677406985e-10,
+      "backward_residual": 4.836523213963839e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 39
+    },
+    {
+      "hermitian_defect": 5.408475753113143e-16,
+      "relative_eigenpair_residual": 1.1441090591373782e-10,
+      "backward_residual": 5.348922145348768e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 40
+    },
+    {
+      "hermitian_defect": 5.413785357866104e-16,
+      "relative_eigenpair_residual": 1.0036004102494834e-10,
+      "backward_residual": 4.2282747309779566e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 41
+    },
+    {
+      "hermitian_defect": 5.414693540944911e-16,
+      "relative_eigenpair_residual": 1.0098407498137721e-10,
+      "backward_residual": 5.171752570756607e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 42
+    },
+    {
+      "hermitian_defect": 5.404991506118664e-16,
+      "relative_eigenpair_residual": 9.915538387359961e-11,
+      "backward_residual": 4.9745787579829005e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 43
+    },
+    {
+      "hermitian_defect": 5.409700522049596e-16,
+      "relative_eigenpair_residual": 9.470649297826049e-11,
+      "backward_residual": 5.210314932820324e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 44
+    },
+    {
+      "hermitian_defect": 5.413386015864139e-16,
+      "relative_eigenpair_residual": 9.300220394324496e-11,
+      "backward_residual": 4.571506163593614e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 45
+    },
+    {
+      "hermitian_defect": 5.415038951735948e-16,
+      "relative_eigenpair_residual": 9.936240230235745e-11,
+      "backward_residual": 5.128957651678159e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 46
+    },
+    {
+      "hermitian_defect": 5.407105169741343e-16,
+      "relative_eigenpair_residual": 8.804379547279582e-11,
+      "backward_residual": 4.776579790995823e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 47
+    },
+    {
+      "hermitian_defect": 5.410817014987353e-16,
+      "relative_eigenpair_residual": 9.092573401376892e-11,
+      "backward_residual": 5.541348511261422e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 48
+    },
+    {
+      "hermitian_defect": 5.415178532624018e-16,
+      "relative_eigenpair_residual": 8.187683719555031e-11,
+      "backward_residual": 4.588394827500845e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 49
+    },
+    {
+      "hermitian_defect": 5.403210344434263e-16,
+      "relative_eigenpair_residual": 8.264122077306671e-11,
+      "backward_residual": 4.785155554791602e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 50
+    },
+    {
+      "hermitian_defect": 5.410106976372569e-16,
+      "relative_eigenpair_residual": 8.842301469582894e-11,
+      "backward_residual": 5.286953002309921e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 51
+    },
+    {
+      "hermitian_defect": 5.408466859854186e-16,
+      "relative_eigenpair_residual": 8.027914708983211e-11,
+      "backward_residual": 5.199873711864165e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 52
+    },
+    {
+      "hermitian_defect": 5.412366182165629e-16,
+      "relative_eigenpair_residual": 6.592547324943854e-11,
+      "backward_residual": 4.580234834929899e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 53
+    },
+    {
+      "hermitian_defect": 5.41322570471203e-16,
+      "relative_eigenpair_residual": 6.093224370986122e-11,
+      "backward_residual": 4.1399127573803254e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 54
+    },
+    {
+      "hermitian_defect": 5.405287395646293e-16,
+      "relative_eigenpair_residual": 7.128466058201163e-11,
+      "backward_residual": 4.994575796239209e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 55
+    },
+    {
+      "hermitian_defect": 5.413200326337527e-16,
+      "relative_eigenpair_residual": 6.411626510895208e-11,
+      "backward_residual": 5.335249385434171e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 56
+    },
+    {
+      "hermitian_defect": 5.40505985337943e-16,
+      "relative_eigenpair_residual": 6.251107947711189e-11,
+      "backward_residual": 4.478689456017879e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 57
+    },
+    {
+      "hermitian_defect": 5.406468246555136e-16,
+      "relative_eigenpair_residual": 6.324758032203851e-11,
+      "backward_residual": 5.134807569826539e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 58
+    },
+    {
+      "hermitian_defect": 5.422161407699782e-16,
+      "relative_eigenpair_residual": 5.936735335795428e-11,
+      "backward_residual": 4.629292292754021e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 59
+    },
+    {
+      "hermitian_defect": 5.413474263671792e-16,
+      "relative_eigenpair_residual": 6.436381392666111e-11,
+      "backward_residual": 5.116509483452366e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 60
+    },
+    {
+      "hermitian_defect": 5.4121363137213885e-16,
+      "relative_eigenpair_residual": 5.4990460994044684e-11,
+      "backward_residual": 4.609429889058328e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 61
+    },
+    {
+      "hermitian_defect": 5.397080275171688e-16,
+      "relative_eigenpair_residual": 5.720165407209411e-11,
+      "backward_residual": 4.697922843599728e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 62
+    },
+    {
+      "hermitian_defect": 5.430892609749407e-16,
+      "relative_eigenpair_residual": 5.070064768590925e-11,
+      "backward_residual": 4.471827932234184e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 63
+    },
+    {
+      "hermitian_defect": 5.422653134749507e-16,
+      "relative_eigenpair_residual": 5.310001374783074e-11,
+      "backward_residual": 5.309603199311492e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 64
+    },
+    {
+      "hermitian_defect": 5.420394006957155e-16,
+      "relative_eigenpair_residual": 5.020970872636169e-11,
+      "backward_residual": 4.643262476254119e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 65
+    },
+    {
+      "hermitian_defect": 5.4137316166252e-16,
+      "relative_eigenpair_residual": 5.3678736234188625e-11,
+      "backward_residual": 4.879534967179075e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 66
+    },
+    {
+      "hermitian_defect": 5.404095389603926e-16,
+      "relative_eigenpair_residual": 5.21845219158185e-11,
+      "backward_residual": 5.299548815072482e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 67
+    },
+    {
+      "hermitian_defect": 5.399749177449089e-16,
+      "relative_eigenpair_residual": 5.072226254653959e-11,
+      "backward_residual": 5.114354914299936e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 68
+    },
+    {
+      "hermitian_defect": 5.411821003639825e-16,
+      "relative_eigenpair_residual": 4.979555628177733e-11,
+      "backward_residual": 5.03273375740275e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 69
+    },
+    {
+      "hermitian_defect": 5.425392620003189e-16,
+      "relative_eigenpair_residual": 4.339850179820806e-11,
+      "backward_residual": 5.051168508406584e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 70
+    },
+    {
+      "hermitian_defect": 5.408477089733901e-16,
+      "relative_eigenpair_residual": 4.565997710399069e-11,
+      "backward_residual": 4.962861532960495e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 71
+    },
+    {
+      "hermitian_defect": 5.416679569466599e-16,
+      "relative_eigenpair_residual": 4.598929750115533e-11,
+      "backward_residual": 4.934477072214775e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 72
+    },
+    {
+      "hermitian_defect": 5.405187758991247e-16,
+      "relative_eigenpair_residual": 4.3345841179077424e-11,
+      "backward_residual": 5.219243205318308e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 73
+    },
+    {
+      "hermitian_defect": 5.407365491989171e-16,
+      "relative_eigenpair_residual": 3.9291513765990426e-11,
+      "backward_residual": 5.080993120542335e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 74
+    },
+    {
+      "hermitian_defect": 5.410720919932422e-16,
+      "relative_eigenpair_residual": 4.200213142904806e-11,
+      "backward_residual": 5.254790507970499e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 75
+    },
+    {
+      "hermitian_defect": 5.407702889334363e-16,
+      "relative_eigenpair_residual": 4.457961401062978e-11,
+      "backward_residual": 5.744697054575718e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 76
+    },
+    {
+      "hermitian_defect": 5.423873432110251e-16,
+      "relative_eigenpair_residual": 4.1317085772228087e-11,
+      "backward_residual": 4.892947556178686e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 77
+    },
+    {
+      "hermitian_defect": 5.405598765557181e-16,
+      "relative_eigenpair_residual": 3.75521333247935e-11,
+      "backward_residual": 5.120850865385155e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 78
+    },
+    {
+      "hermitian_defect": 5.415148075042105e-16,
+      "relative_eigenpair_residual": 4.0314738632408616e-11,
+      "backward_residual": 4.899062352041988e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 79
+    },
+    {
+      "hermitian_defect": 5.405352455768652e-16,
+      "relative_eigenpair_residual": 3.7852214240937727e-11,
+      "backward_residual": 4.56459585591608e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 80
+    },
+    {
+      "hermitian_defect": 5.421873004698049e-16,
+      "relative_eigenpair_residual": 4.046826318582614e-11,
+      "backward_residual": 4.952751303280427e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 81
+    },
+    {
+      "hermitian_defect": 5.397127815730218e-16,
+      "relative_eigenpair_residual": 4.093437096648115e-11,
+      "backward_residual": 5.862576345735229e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 82
+    },
+    {
+      "hermitian_defect": 5.404602156004417e-16,
+      "relative_eigenpair_residual": 4.2720272797926734e-11,
+      "backward_residual": 5.367378798182934e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 83
+    },
+    {
+      "hermitian_defect": 5.411850455089618e-16,
+      "relative_eigenpair_residual": 3.810703697114778e-11,
+      "backward_residual": 4.860043075495275e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 84
+    },
+    {
+      "hermitian_defect": 5.402847771520177e-16,
+      "relative_eigenpair_residual": 3.786352794345387e-11,
+      "backward_residual": 4.858295901140259e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 85
+    },
+    {
+      "hermitian_defect": 5.408942319301654e-16,
+      "relative_eigenpair_residual": 4.260832665615398e-11,
+      "backward_residual": 5.512390579333634e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 86
+    },
+    {
+      "hermitian_defect": 5.412357811643128e-16,
+      "relative_eigenpair_residual": 3.906588410823399e-11,
+      "backward_residual": 5.087409738769446e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 87
+    },
+    {
+      "hermitian_defect": 5.409180378991612e-16,
+      "relative_eigenpair_residual": 3.4249688364981896e-11,
+      "backward_residual": 4.481586653159003e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 88
+    },
+    {
+      "hermitian_defect": 5.418301756428805e-16,
+      "relative_eigenpair_residual": 3.377110689025845e-11,
+      "backward_residual": 4.711799173471222e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 89
+    },
+    {
+      "hermitian_defect": 5.409254437488216e-16,
+      "relative_eigenpair_residual": 4.6111244875889166e-11,
+      "backward_residual": 6.057047162839124e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 90
+    },
+    {
+      "hermitian_defect": 5.399875839069497e-16,
+      "relative_eigenpair_residual": 3.6318942108754185e-11,
+      "backward_residual": 5.180601703576917e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 91
+    },
+    {
+      "hermitian_defect": 5.410466317731143e-16,
+      "relative_eigenpair_residual": 3.831600213425947e-11,
+      "backward_residual": 5.03194249751769e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 92
+    },
+    {
+      "hermitian_defect": 5.406223907300951e-16,
+      "relative_eigenpair_residual": 3.3928031721302425e-11,
+      "backward_residual": 4.734776874385857e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 93
+    },
+    {
+      "hermitian_defect": 5.411351537164995e-16,
+      "relative_eigenpair_residual": 3.7206668149792634e-11,
+      "backward_residual": 4.886875621916441e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 94
+    },
+    {
+      "hermitian_defect": 5.401725185229795e-16,
+      "relative_eigenpair_residual": 4.421415341992977e-11,
+      "backward_residual": 5.808404622891123e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 95
+    },
+    {
+      "hermitian_defect": 5.417092881951778e-16,
+      "relative_eigenpair_residual": 3.7782531014776346e-11,
+      "backward_residual": 5.169473939770848e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 96
+    },
+    {
+      "hermitian_defect": 5.406635018743962e-16,
+      "relative_eigenpair_residual": 3.68291825676436e-11,
+      "backward_residual": 4.84141700201464e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 97
+    },
+    {
+      "hermitian_defect": 5.415275530278026e-16,
+      "relative_eigenpair_residual": 3.731271053592752e-11,
+      "backward_residual": 4.907235229884176e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 98
+    },
+    {
+      "hermitian_defect": 5.41249842653017e-16,
+      "relative_eigenpair_residual": 3.875085053288728e-11,
+      "backward_residual": 5.223215090641114e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 99
+    },
+    {
+      "hermitian_defect": 5.407284454344277e-16,
+      "relative_eigenpair_residual": 3.817577052462153e-11,
+      "backward_residual": 5.437392119766151e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 100
+    },
+    {
+      "hermitian_defect": 5.417312725558138e-16,
+      "relative_eigenpair_residual": 3.6575546091105794e-11,
+      "backward_residual": 4.819451917752741e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 101
+    },
+    {
+      "hermitian_defect": 5.398454091112551e-16,
+      "relative_eigenpair_residual": 4.2255288052479025e-11,
+      "backward_residual": 5.5723578879882115e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 102
+    },
+    {
+      "hermitian_defect": 5.424112582932925e-16,
+      "relative_eigenpair_residual": 3.877416906646114e-11,
+      "backward_residual": 5.117867796852645e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 103
+    },
+    {
+      "hermitian_defect": 5.403788301820526e-16,
+      "relative_eigenpair_residual": 3.68365512276632e-11,
+      "backward_residual": 5.420248424089341e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 104
+    },
+    {
+      "hermitian_defect": 5.404437360046639e-16,
+      "relative_eigenpair_residual": 4.417774856883939e-11,
+      "backward_residual": 5.843046417971254e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 105
+    },
+    {
+      "hermitian_defect": 5.400278201208206e-16,
+      "relative_eigenpair_residual": 3.910477304380874e-11,
+      "backward_residual": 5.178044040082361e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 106
+    },
+    {
+      "hermitian_defect": 5.405218205941648e-16,
+      "relative_eigenpair_residual": 3.836921904666109e-11,
+      "backward_residual": 5.086932386974665e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 107
+    },
+    {
+      "hermitian_defect": 5.412279150461082e-16,
+      "relative_eigenpair_residual": 3.951286582955488e-11,
+      "backward_residual": 5.24547940782191e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 108
+    },
+    {
+      "hermitian_defect": 5.403548914184544e-16,
+      "relative_eigenpair_residual": 3.875336822693531e-11,
+      "backward_residual": 5.151885005392212e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 109
+    },
+    {
+      "hermitian_defect": 5.409231296355636e-16,
+      "relative_eigenpair_residual": 4.140843799194932e-11,
+      "backward_residual": 5.513047961261365e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 110
+    },
+    {
+      "hermitian_defect": 5.396573745137301e-16,
+      "relative_eigenpair_residual": 3.611889140608159e-11,
+      "backward_residual": 4.816365942536209e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 111
+    },
+    {
+      "hermitian_defect": 5.39591268278557e-16,
+      "relative_eigenpair_residual": 4.280580642149495e-11,
+      "backward_residual": 5.717491956727647e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 112
+    },
+    {
+      "hermitian_defect": 5.405977153296626e-16,
+      "relative_eigenpair_residual": 4.034438096105003e-11,
+      "backward_residual": 5.398078012718684e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 113
+    },
+    {
+      "hermitian_defect": 5.411000620838043e-16,
+      "relative_eigenpair_residual": 3.61489375075978e-11,
+      "backward_residual": 4.845515522749353e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 114
+    },
+    {
+      "hermitian_defect": 5.404098278568933e-16,
+      "relative_eigenpair_residual": 3.4253803317377565e-11,
+      "backward_residual": 5.221623601079643e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 115
+    },
+    {
+      "hermitian_defect": 5.40650875629695e-16,
+      "relative_eigenpair_residual": 4.073927750796282e-11,
+      "backward_residual": 5.48199587736037e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 116
+    },
+    {
+      "hermitian_defect": 5.41210092683735e-16,
+      "relative_eigenpair_residual": 3.847746547861959e-11,
+      "backward_residual": 5.188284787658557e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 117
+    },
+    {
+      "hermitian_defect": 5.406090080777543e-16,
+      "relative_eigenpair_residual": 3.335335593206605e-11,
+      "backward_residual": 5.083470634970568e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 118
+    },
+    {
+      "hermitian_defect": 5.417994051146625e-16,
+      "relative_eigenpair_residual": 3.919461605889906e-11,
+      "backward_residual": 5.307977756419145e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 119
+    },
+    {
+      "hermitian_defect": 5.410720923313388e-16,
+      "relative_eigenpair_residual": 3.786551585260042e-11,
+      "backward_residual": 5.139717417739554e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 120
+    },
+    {
+      "hermitian_defect": 5.400732800732715e-16,
+      "relative_eigenpair_residual": 3.491051860340863e-11,
+      "backward_residual": 5.380396442189805e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 121
+    },
+    {
+      "hermitian_defect": 5.39905786454494e-16,
+      "relative_eigenpair_residual": 3.802737496566212e-11,
+      "backward_residual": 5.18651145904761e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 122
+    },
+    {
+      "hermitian_defect": 5.417837357431136e-16,
+      "relative_eigenpair_residual": 3.8232572252430344e-11,
+      "backward_residual": 5.227604385714008e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 123
+    },
+    {
+      "hermitian_defect": 5.4052024981884185e-16,
+      "relative_eigenpair_residual": 3.5211155259375465e-11,
+      "backward_residual": 4.873729578139585e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 124
+    },
+    {
+      "hermitian_defect": 5.412439236658409e-16,
+      "relative_eigenpair_residual": 3.858646757929348e-11,
+      "backward_residual": 5.535722940421051e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 125
+    },
+    {
+      "hermitian_defect": 5.401880781449846e-16,
+      "relative_eigenpair_residual": 4.183875479625724e-11,
+      "backward_residual": 5.766434862021326e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 126
+    },
+    {
+      "hermitian_defect": 5.417925043064874e-16,
+      "relative_eigenpair_residual": 3.971231108945582e-11,
+      "backward_residual": 5.488687762408963e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 127
+    },
+    {
+      "hermitian_defect": 5.409387278107229e-16,
+      "relative_eigenpair_residual": 3.4358633586211e-11,
+      "backward_residual": 4.76237999227798e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 128
+    },
+    {
+      "hermitian_defect": 5.402850450452258e-16,
+      "relative_eigenpair_residual": 3.404748788640081e-11,
+      "backward_residual": 4.733121579933362e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 129
+    },
+    {
+      "hermitian_defect": 5.405345639399652e-16,
+      "relative_eigenpair_residual": 3.5408652389466224e-11,
+      "backward_residual": 4.937141568850335e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 130
+    },
+    {
+      "hermitian_defect": 5.411845077710534e-16,
+      "relative_eigenpair_residual": 3.6497737705119633e-11,
+      "backward_residual": 5.180037032767326e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 131
+    },
+    {
+      "hermitian_defect": 5.401234786962015e-16,
+      "relative_eigenpair_residual": 4.041180857683195e-11,
+      "backward_residual": 5.669794032749213e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 132
+    },
+    {
+      "hermitian_defect": 5.409101673536803e-16,
+      "relative_eigenpair_residual": 4.025039512791866e-11,
+      "backward_residual": 5.665227898533455e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 133
+    },
+    {
+      "hermitian_defect": 5.41275032154113e-16,
+      "relative_eigenpair_residual": 3.4397673526424294e-11,
+      "backward_residual": 4.954823404551916e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 134
+    },
+    {
+      "hermitian_defect": 5.414099204288004e-16,
+      "relative_eigenpair_residual": 4.072397473762622e-11,
+      "backward_residual": 5.769723682988198e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 135
+    },
+    {
+      "hermitian_defect": 5.407504445704708e-16,
+      "relative_eigenpair_residual": 3.9300015844897514e-11,
+      "backward_residual": 5.586835750735525e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 136
+    },
+    {
+      "hermitian_defect": 5.394154400025927e-16,
+      "relative_eigenpair_residual": 3.6009674321010235e-11,
+      "backward_residual": 5.136724932106374e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 137
+    },
+    {
+      "hermitian_defect": 5.413198301880544e-16,
+      "relative_eigenpair_residual": 3.452079725158081e-11,
+      "backward_residual": 4.941592454258621e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 138
+    },
+    {
+      "hermitian_defect": 5.39771066355963e-16,
+      "relative_eigenpair_residual": 3.526731871104601e-11,
+      "backward_residual": 5.066429644168575e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 139
+    },
+    {
+      "hermitian_defect": 5.406781319651983e-16,
+      "relative_eigenpair_residual": 3.600684789162526e-11,
+      "backward_residual": 5.191370465932711e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 140
+    },
+    {
+      "hermitian_defect": 5.4047500345819e-16,
+      "relative_eigenpair_residual": 3.304875857647322e-11,
+      "backward_residual": 4.985973426483724e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 141
+    },
+    {
+      "hermitian_defect": 5.400519935076945e-16,
+      "relative_eigenpair_residual": 3.191648754548326e-11,
+      "backward_residual": 4.635705795231454e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 142
+    },
+    {
+      "hermitian_defect": 5.414692059943476e-16,
+      "relative_eigenpair_residual": 3.0613194009047366e-11,
+      "backward_residual": 4.463182547967885e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 143
+    },
+    {
+      "hermitian_defect": 5.405162989459834e-16,
+      "relative_eigenpair_residual": 3.7620605680696925e-11,
+      "backward_residual": 5.505773417106117e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 144
+    },
+    {
+      "hermitian_defect": 5.413495770444989e-16,
+      "relative_eigenpair_residual": 3.850694870490755e-11,
+      "backward_residual": 5.65729495919885e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 145
+    },
+    {
+      "hermitian_defect": 5.394711561150946e-16,
+      "relative_eigenpair_residual": 3.1839560251269825e-11,
+      "backward_residual": 4.696062233528178e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 146
+    },
+    {
+      "hermitian_defect": 5.411020707715184e-16,
+      "relative_eigenpair_residual": 3.392713283168236e-11,
+      "backward_residual": 5.023774841362884e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 147
+    },
+    {
+      "hermitian_defect": 5.410468306261795e-16,
+      "relative_eigenpair_residual": 3.3106631628231516e-11,
+      "backward_residual": 4.921898063272137e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 148
+    },
+    {
+      "hermitian_defect": 5.404491527541676e-16,
+      "relative_eigenpair_residual": 3.733443200460504e-11,
+      "backward_residual": 5.5728757575679e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 149
+    },
+    {
+      "hermitian_defect": 5.409452692683753e-16,
+      "relative_eigenpair_residual": 3.413684751121376e-11,
+      "backward_residual": 5.116372619822319e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 150
+    },
+    {
+      "hermitian_defect": 5.402428070018749e-16,
+      "relative_eigenpair_residual": 3.157484725336663e-11,
+      "backward_residual": 4.751873041124463e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 151
+    },
+    {
+      "hermitian_defect": 5.397851508655263e-16,
+      "relative_eigenpair_residual": 3.125294901586171e-11,
+      "backward_residual": 5.162557918189067e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 152
+    },
+    {
+      "hermitian_defect": 5.407652352401411e-16,
+      "relative_eigenpair_residual": 3.137164083084056e-11,
+      "backward_residual": 4.760738968701368e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 153
+    },
+    {
+      "hermitian_defect": 5.408188653087258e-16,
+      "relative_eigenpair_residual": 3.591652801569623e-11,
+      "backward_residual": 5.473413653406441e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 154
+    },
+    {
+      "hermitian_defect": 5.403316265488571e-16,
+      "relative_eigenpair_residual": 3.1571694817106434e-11,
+      "backward_residual": 4.831706577957265e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 155
+    },
+    {
+      "hermitian_defect": 5.416431537581013e-16,
+      "relative_eigenpair_residual": 3.149086255256225e-11,
+      "backward_residual": 5.453859138597139e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 156
+    },
+    {
+      "hermitian_defect": 5.408171742890608e-16,
+      "relative_eigenpair_residual": 3.124970847613276e-11,
+      "backward_residual": 4.8234457022398e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 157
+    },
+    {
+      "hermitian_defect": 5.410652964407613e-16,
+      "relative_eigenpair_residual": 3.06597367696591e-11,
+      "backward_residual": 5.2906907950062995e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 158
+    },
+    {
+      "hermitian_defect": 5.410504687211704e-16,
+      "relative_eigenpair_residual": 3.3656276538862615e-11,
+      "backward_residual": 5.239860736335243e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 159
+    },
+    {
+      "hermitian_defect": 5.412319688000085e-16,
+      "relative_eigenpair_residual": 2.7807893908762332e-11,
+      "backward_residual": 4.63294822755281e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 160
+    },
+    {
+      "hermitian_defect": 5.405629898868899e-16,
+      "relative_eigenpair_residual": 3.320400850905137e-11,
+      "backward_residual": 5.214454355347996e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 161
+    },
+    {
+      "hermitian_defect": 5.399457724299155e-16,
+      "relative_eigenpair_residual": 3.164838108614866e-11,
+      "backward_residual": 4.991794635914176e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 162
+    },
+    {
+      "hermitian_defect": 5.403316636537849e-16,
+      "relative_eigenpair_residual": 3.3056167129420166e-11,
+      "backward_residual": 5.236550115246576e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 163
+    },
+    {
+      "hermitian_defect": 5.394912195045724e-16,
+      "relative_eigenpair_residual": 2.8666510124769608e-11,
+      "backward_residual": 4.592483313515276e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 164
+    },
+    {
+      "hermitian_defect": 5.403743187630406e-16,
+      "relative_eigenpair_residual": 3.2635687431960994e-11,
+      "backward_residual": 5.215007848416132e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 165
+    },
+    {
+      "hermitian_defect": 5.407010707672565e-16,
+      "relative_eigenpair_residual": 3.190556756453477e-11,
+      "backward_residual": 5.120427711624e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 166
+    },
+    {
+      "hermitian_defect": 5.407873892297052e-16,
+      "relative_eigenpair_residual": 2.8149851935184683e-11,
+      "backward_residual": 4.537174458225684e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 167
+    },
+    {
+      "hermitian_defect": 5.388584695660535e-16,
+      "relative_eigenpair_residual": 2.9480107608192224e-11,
+      "backward_residual": 4.771966525116648e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 168
+    },
+    {
+      "hermitian_defect": 5.410606549263912e-16,
+      "relative_eigenpair_residual": 2.938902271809768e-11,
+      "backward_residual": 4.777479799436529e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 169
+    },
+    {
+      "hermitian_defect": 5.393587187874895e-16,
+      "relative_eigenpair_residual": 2.984437211503721e-11,
+      "backward_residual": 4.871971767410363e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 170
+    },
+    {
+      "hermitian_defect": 5.401935032910251e-16,
+      "relative_eigenpair_residual": 3.1862979629628984e-11,
+      "backward_residual": 5.22320378646364e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 171
+    },
+    {
+      "hermitian_defect": 5.397415664142439e-16,
+      "relative_eigenpair_residual": 3.335242371912643e-11,
+      "backward_residual": 5.489869329820944e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 172
+    },
+    {
+      "hermitian_defect": 5.409291877674064e-16,
+      "relative_eigenpair_residual": 3.295137103445318e-11,
+      "backward_residual": 5.445823408668416e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 173
+    },
+    {
+      "hermitian_defect": 5.404996507749535e-16,
+      "relative_eigenpair_residual": 2.6605365541589623e-11,
+      "backward_residual": 4.511228213916558e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 174
+    },
+    {
+      "hermitian_defect": 5.410245244568684e-16,
+      "relative_eigenpair_residual": 3.035369797790724e-11,
+      "backward_residual": 5.056002119568971e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 175
+    },
+    {
+      "hermitian_defect": 5.403256516653939e-16,
+      "relative_eigenpair_residual": 3.096047562069884e-11,
+      "backward_residual": 5.176571507359825e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 176
+    },
+    {
+      "hermitian_defect": 5.414196180745816e-16,
+      "relative_eigenpair_residual": 2.870500508063077e-11,
+      "backward_residual": 5.040171707105701e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 177
+    },
+    {
+      "hermitian_defect": 5.407280299880139e-16,
+      "relative_eigenpair_residual": 2.7508515621702347e-11,
+      "backward_residual": 4.632543056777423e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 178
+    },
+    {
+      "hermitian_defect": 5.415400834385122e-16,
+      "relative_eigenpair_residual": 3.027250324892357e-11,
+      "backward_residual": 5.115219763254822e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 179
+    },
+    {
+      "hermitian_defect": 5.406737607195693e-16,
+      "relative_eigenpair_residual": 2.6340852228955603e-11,
+      "backward_residual": 4.557408262253731e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 180
+    },
+    {
+      "hermitian_defect": 5.403052721615245e-16,
+      "relative_eigenpair_residual": 2.7447674571511562e-11,
+      "backward_residual": 4.666753115133958e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 181
+    },
+    {
+      "hermitian_defect": 5.403764171536051e-16,
+      "relative_eigenpair_residual": 2.7768543072865843e-11,
+      "backward_residual": 4.788446120541708e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 182
+    },
+    {
+      "hermitian_defect": 5.394965533858964e-16,
+      "relative_eigenpair_residual": 3.081031899839211e-11,
+      "backward_residual": 5.2664635690542e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 183
+    },
+    {
+      "hermitian_defect": 5.413230777552211e-16,
+      "relative_eigenpair_residual": 2.743401746851178e-11,
+      "backward_residual": 4.700005400940115e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 184
+    },
+    {
+      "hermitian_defect": 5.40564591592144e-16,
+      "relative_eigenpair_residual": 2.582925711757472e-11,
+      "backward_residual": 4.544641930985801e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 185
+    },
+    {
+      "hermitian_defect": 5.396973917467069e-16,
+      "relative_eigenpair_residual": 2.2584014029451483e-11,
+      "backward_residual": 4.367883882856191e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 186
+    },
+    {
+      "hermitian_defect": 5.395964070167812e-16,
+      "relative_eigenpair_residual": 2.471797089279964e-11,
+      "backward_residual": 4.50352563312969e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 187
+    },
+    {
+      "hermitian_defect": 5.395345927240187e-16,
+      "relative_eigenpair_residual": 2.6191495945827273e-11,
+      "backward_residual": 4.590911801974577e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 188
+    },
+    {
+      "hermitian_defect": 5.388872607238254e-16,
+      "relative_eigenpair_residual": 2.6235870076078756e-11,
+      "backward_residual": 4.522931412456449e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 189
+    },
+    {
+      "hermitian_defect": 5.405061893679961e-16,
+      "relative_eigenpair_residual": 2.6023452564125995e-11,
+      "backward_residual": 4.486433136502713e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 190
+    },
+    {
+      "hermitian_defect": 5.403594431487126e-16,
+      "relative_eigenpair_residual": 2.5532979665153265e-11,
+      "backward_residual": 4.3986105621079196e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 191
+    },
+    {
+      "hermitian_defect": 5.396260951009661e-16,
+      "relative_eigenpair_residual": 2.417460645341567e-11,
+      "backward_residual": 4.15323839218933e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 192
+    },
+    {
+      "hermitian_defect": 5.405916606287802e-16,
+      "relative_eigenpair_residual": 2.2457290422026885e-11,
+      "backward_residual": 3.867245476406268e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 193
+    },
+    {
+      "hermitian_defect": 5.398841547347888e-16,
+      "relative_eigenpair_residual": 2.3058345449876238e-11,
+      "backward_residual": 4.812167233962384e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 194
+    },
+    {
+      "hermitian_defect": 5.411189357261558e-16,
+      "relative_eigenpair_residual": 2.758957765583726e-11,
+      "backward_residual": 4.645732801884366e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 195
+    },
+    {
+      "hermitian_defect": 5.408315816972469e-16,
+      "relative_eigenpair_residual": 2.2974427294171723e-11,
+      "backward_residual": 3.894428550799676e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 196
+    },
+    {
+      "hermitian_defect": 5.411063660306016e-16,
+      "relative_eigenpair_residual": 2.340511558087058e-11,
+      "backward_residual": 4.367653248706393e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 197
+    },
+    {
+      "hermitian_defect": 5.408929191224699e-16,
+      "relative_eigenpair_residual": 2.7210483239368004e-11,
+      "backward_residual": 4.4235591740014145e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 198
+    },
+    {
+      "hermitian_defect": 5.409677557029599e-16,
+      "relative_eigenpair_residual": 2.738562083366446e-11,
+      "backward_residual": 4.388841383786928e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 199
+    },
+    {
+      "hermitian_defect": 5.417332591993616e-16,
+      "relative_eigenpair_residual": 2.7822053249756284e-11,
+      "backward_residual": 4.63536024686007e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 200
+    },
+    {
+      "hermitian_defect": 5.407979800268621e-16,
+      "relative_eigenpair_residual": 2.7329772346921273e-11,
+      "backward_residual": 4.45031662403494e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 201
+    },
+    {
+      "hermitian_defect": 5.405008944289904e-16,
+      "relative_eigenpair_residual": 2.991280328592927e-11,
+      "backward_residual": 4.565980997831138e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 202
+    },
+    {
+      "hermitian_defect": 5.410978377457214e-16,
+      "relative_eigenpair_residual": 2.9995564295344416e-11,
+      "backward_residual": 4.820699655702457e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 203
+    },
+    {
+      "hermitian_defect": 5.415548758298443e-16,
+      "relative_eigenpair_residual": 2.7878411016823447e-11,
+      "backward_residual": 4.926950291398534e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 204
+    },
+    {
+      "hermitian_defect": 5.408273895457437e-16,
+      "relative_eigenpair_residual": 3.1481042792812826e-11,
+      "backward_residual": 4.545581899504995e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 205
+    },
+    {
+      "hermitian_defect": 5.406934178273305e-16,
+      "relative_eigenpair_residual": 3.263048201189083e-11,
+      "backward_residual": 4.844736835956546e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 206
+    },
+    {
+      "hermitian_defect": 5.40512802213513e-16,
+      "relative_eigenpair_residual": 3.102986855662343e-11,
+      "backward_residual": 4.636647361920783e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 207
+    },
+    {
+      "hermitian_defect": 5.403477036399781e-16,
+      "relative_eigenpair_residual": 3.5958925174519184e-11,
+      "backward_residual": 4.884884167913176e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 208
+    },
+    {
+      "hermitian_defect": 5.413516778013525e-16,
+      "relative_eigenpair_residual": 3.772563449426157e-11,
+      "backward_residual": 5.01640218882707e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 209
+    },
+    {
+      "hermitian_defect": 5.404560151040149e-16,
+      "relative_eigenpair_residual": 3.6288337274407864e-11,
+      "backward_residual": 4.720789119909527e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 210
+    },
+    {
+      "hermitian_defect": 5.399453428268698e-16,
+      "relative_eigenpair_residual": 3.474599927387332e-11,
+      "backward_residual": 4.4258318450154803e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 211
+    },
+    {
+      "hermitian_defect": 5.407539510851755e-16,
+      "relative_eigenpair_residual": 3.530212109497604e-11,
+      "backward_residual": 4.649831949971826e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 212
+    },
+    {
+      "hermitian_defect": 5.408461466219291e-16,
+      "relative_eigenpair_residual": 3.412722599810726e-11,
+      "backward_residual": 4.453587339939384e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 213
+    },
+    {
+      "hermitian_defect": 5.413445069487692e-16,
+      "relative_eigenpair_residual": 4.020689776918655e-11,
+      "backward_residual": 4.769175412699499e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 214
+    },
+    {
+      "hermitian_defect": 5.403659323438897e-16,
+      "relative_eigenpair_residual": 3.4596622108070466e-11,
+      "backward_residual": 4.566806011399433e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 215
+    },
+    {
+      "hermitian_defect": 5.40322081958184e-16,
+      "relative_eigenpair_residual": 3.8938857887725176e-11,
+      "backward_residual": 4.3980844550163214e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 216
+    },
+    {
+      "hermitian_defect": 5.415370273388672e-16,
+      "relative_eigenpair_residual": 4.1357067526591256e-11,
+      "backward_residual": 4.762689224615258e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 217
+    },
+    {
+      "hermitian_defect": 5.411991253947683e-16,
+      "relative_eigenpair_residual": 4.0141212700422556e-11,
+      "backward_residual": 4.617997511782202e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 218
+    },
+    {
+      "hermitian_defect": 5.400974565140437e-16,
+      "relative_eigenpair_residual": 4.1795297421108906e-11,
+      "backward_residual": 4.371264450536119e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 219
+    },
+    {
+      "hermitian_defect": 5.407281102807497e-16,
+      "relative_eigenpair_residual": 4.4770597327109756e-11,
+      "backward_residual": 4.559649602266082e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 220
+    },
+    {
+      "hermitian_defect": 5.407812490897811e-16,
+      "relative_eigenpair_residual": 4.096135248279468e-11,
+      "backward_residual": 4.082432180892029e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 221
+    },
+    {
+      "hermitian_defect": 5.409005641797695e-16,
+      "relative_eigenpair_residual": 4.6646706435859346e-11,
+      "backward_residual": 5.210268668189807e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 222
+    },
+    {
+      "hermitian_defect": 5.414817433339412e-16,
+      "relative_eigenpair_residual": 4.780482970040063e-11,
+      "backward_residual": 4.591309477406304e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 223
+    },
+    {
+      "hermitian_defect": 5.410982720157175e-16,
+      "relative_eigenpair_residual": 4.4212623042129366e-11,
+      "backward_residual": 5.450507794388016e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 224
+    },
+    {
+      "hermitian_defect": 5.41172989393456e-16,
+      "relative_eigenpair_residual": 5.183896914394531e-11,
+      "backward_residual": 4.588883170454032e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 225
+    },
+    {
+      "hermitian_defect": 5.417482999880617e-16,
+      "relative_eigenpair_residual": 5.216801462199951e-11,
+      "backward_residual": 4.850219075229114e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 226
+    },
+    {
+      "hermitian_defect": 5.410374513231121e-16,
+      "relative_eigenpair_residual": 5.75584126546746e-11,
+      "backward_residual": 4.800027383227342e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 227
+    },
+    {
+      "hermitian_defect": 5.404842154998629e-16,
+      "relative_eigenpair_residual": 4.972365284581629e-11,
+      "backward_residual": 4.320041906890003e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 228
+    },
+    {
+      "hermitian_defect": 5.409587630245325e-16,
+      "relative_eigenpair_residual": 5.716547649507867e-11,
+      "backward_residual": 4.48125846202711e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 229
+    },
+    {
+      "hermitian_defect": 5.420127998328965e-16,
+      "relative_eigenpair_residual": 6.09190955416827e-11,
+      "backward_residual": 5.047147229826371e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 230
+    },
+    {
+      "hermitian_defect": 5.407046325591451e-16,
+      "relative_eigenpair_residual": 6.083060139953246e-11,
+      "backward_residual": 4.900942247073793e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 231
+    },
+    {
+      "hermitian_defect": 5.40810728022401e-16,
+      "relative_eigenpair_residual": 5.997097173195252e-11,
+      "backward_residual": 4.882901238438861e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 232
+    },
+    {
+      "hermitian_defect": 5.420336707136103e-16,
+      "relative_eigenpair_residual": 6.076408187773413e-11,
+      "backward_residual": 4.2342031384530936e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 233
+    },
+    {
+      "hermitian_defect": 5.416396185025505e-16,
+      "relative_eigenpair_residual": 6.694681406693634e-11,
+      "backward_residual": 4.845104036069277e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 234
+    },
+    {
+      "hermitian_defect": 5.408082924276315e-16,
+      "relative_eigenpair_residual": 6.860103927946155e-11,
+      "backward_residual": 4.698454917556864e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 235
+    },
+    {
+      "hermitian_defect": 5.410417318038402e-16,
+      "relative_eigenpair_residual": 7.548254896473492e-11,
+      "backward_residual": 4.674901676278078e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 236
+    },
+    {
+      "hermitian_defect": 5.405581594353482e-16,
+      "relative_eigenpair_residual": 7.395826251603412e-11,
+      "backward_residual": 4.554413184584625e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 237
+    },
+    {
+      "hermitian_defect": 5.41901348934335e-16,
+      "relative_eigenpair_residual": 7.732722520029439e-11,
+      "backward_residual": 4.450061252514206e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 238
+    },
+    {
+      "hermitian_defect": 5.40319350036745e-16,
+      "relative_eigenpair_residual": 7.96611537127085e-11,
+      "backward_residual": 4.414084804506413e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 239
+    },
+    {
+      "hermitian_defect": 5.415090500839344e-16,
+      "relative_eigenpair_residual": 8.808197132758419e-11,
+      "backward_residual": 4.695659687333947e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 240
+    },
+    {
+      "hermitian_defect": 5.408817541305483e-16,
+      "relative_eigenpair_residual": 9.718075190726442e-11,
+      "backward_residual": 4.98020529585385e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 241
+    },
+    {
+      "hermitian_defect": 5.41157876420735e-16,
+      "relative_eigenpair_residual": 7.932657950586897e-11,
+      "backward_residual": 4.635135940496612e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 242
+    },
+    {
+      "hermitian_defect": 5.410180128432723e-16,
+      "relative_eigenpair_residual": 1.0143509690956987e-10,
+      "backward_residual": 4.791141180331005e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 243
+    },
+    {
+      "hermitian_defect": 5.409099992988506e-16,
+      "relative_eigenpair_residual": 1.0994308551551095e-10,
+      "backward_residual": 4.978679696260344e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 244
+    },
+    {
+      "hermitian_defect": 5.407302103165106e-16,
+      "relative_eigenpair_residual": 1.0903958678078958e-10,
+      "backward_residual": 4.729401451743883e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 245
+    },
+    {
+      "hermitian_defect": 5.417037764656013e-16,
+      "relative_eigenpair_residual": 1.0990783616872136e-10,
+      "backward_residual": 4.561297100376028e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 246
+    },
+    {
+      "hermitian_defect": 5.423358716353207e-16,
+      "relative_eigenpair_residual": 1.28401528957969e-10,
+      "backward_residual": 5.093427866780624e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 247
+    },
+    {
+      "hermitian_defect": 5.418600880851296e-16,
+      "relative_eigenpair_residual": 1.2687784444240323e-10,
+      "backward_residual": 4.805379482713938e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 248
+    },
+    {
+      "hermitian_defect": 5.419771148242269e-16,
+      "relative_eigenpair_residual": 1.38786766449692e-10,
+      "backward_residual": 5.012924313984407e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 249
+    },
+    {
+      "hermitian_defect": 5.423109148354922e-16,
+      "relative_eigenpair_residual": 1.5460614857728446e-10,
+      "backward_residual": 5.319198505979672e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 250
+    },
+    {
+      "hermitian_defect": 5.417717805407538e-16,
+      "relative_eigenpair_residual": 1.370734945954337e-10,
+      "backward_residual": 4.486404789422207e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 251
+    },
+    {
+      "hermitian_defect": 5.404395417800208e-16,
+      "relative_eigenpair_residual": 1.4899866818916283e-10,
+      "backward_residual": 4.633125461940219e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 252
+    },
+    {
+      "hermitian_defect": 5.404673517146038e-16,
+      "relative_eigenpair_residual": 1.674182403446283e-10,
+      "backward_residual": 4.938920466400083e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 253
+    },
+    {
+      "hermitian_defect": 5.413438387526196e-16,
+      "relative_eigenpair_residual": 1.46778477367015e-10,
+      "backward_residual": 4.10192108945809e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 254
+    },
+    {
+      "hermitian_defect": 5.417292379285146e-16,
+      "relative_eigenpair_residual": 1.6661002681800833e-10,
+      "backward_residual": 4.729937055730416e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 255
+    },
+    {
+      "hermitian_defect": 5.408726422403344e-16,
+      "relative_eigenpair_residual": 1.9285122613909237e-10,
+      "backward_residual": 4.813570808602834e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 256
+    },
+    {
+      "hermitian_defect": 5.399045067931511e-16,
+      "relative_eigenpair_residual": 1.93705277628279e-10,
+      "backward_residual": 4.557533330336653e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 257
+    },
+    {
+      "hermitian_defect": 5.416204287825573e-16,
+      "relative_eigenpair_residual": 2.138905972616553e-10,
+      "backward_residual": 4.7349886675684955e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 258
+    },
+    {
+      "hermitian_defect": 5.415430081448711e-16,
+      "relative_eigenpair_residual": 2.3102779444446912e-10,
+      "backward_residual": 4.802586515092459e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 259
+    },
+    {
+      "hermitian_defect": 5.425241040967612e-16,
+      "relative_eigenpair_residual": 2.2878530605223802e-10,
+      "backward_residual": 4.456686954129349e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 260
+    },
+    {
+      "hermitian_defect": 5.409414556603815e-16,
+      "relative_eigenpair_residual": 2.3071422372346213e-10,
+      "backward_residual": 4.653605360754529e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 261
+    },
+    {
+      "hermitian_defect": 5.405747079415195e-16,
+      "relative_eigenpair_residual": 2.725726855462992e-10,
+      "backward_residual": 4.630512543755321e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 262
+    },
+    {
+      "hermitian_defect": 5.407398544031771e-16,
+      "relative_eigenpair_residual": 3.1595303136902045e-10,
+      "backward_residual": 4.993628127246745e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 263
+    },
+    {
+      "hermitian_defect": 5.4077339743356e-16,
+      "relative_eigenpair_residual": 3.2511535265252516e-10,
+      "backward_residual": 4.767380815152812e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 264
+    },
+    {
+      "hermitian_defect": 5.411683014195139e-16,
+      "relative_eigenpair_residual": 3.285108615025873e-10,
+      "backward_residual": 4.45604012809183e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 265
+    },
+    {
+      "hermitian_defect": 5.416204481743466e-16,
+      "relative_eigenpair_residual": 4.0843431268384346e-10,
+      "backward_residual": 5.108365337783974e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 266
+    },
+    {
+      "hermitian_defect": 5.40373619885174e-16,
+      "relative_eigenpair_residual": 3.7336620727248845e-10,
+      "backward_residual": 4.474821450575045e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 267
+    },
+    {
+      "hermitian_defect": 5.424275868335281e-16,
+      "relative_eigenpair_residual": 4.631011884630195e-10,
+      "backward_residual": 4.871663912534027e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 268
+    },
+    {
+      "hermitian_defect": 5.413767217210611e-16,
+      "relative_eigenpair_residual": 4.424444658673516e-10,
+      "backward_residual": 4.595035068947506e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 269
+    },
+    {
+      "hermitian_defect": 5.422185304925101e-16,
+      "relative_eigenpair_residual": 5.252858842211054e-10,
+      "backward_residual": 4.829829388973596e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 270
+    },
+    {
+      "hermitian_defect": 5.41830176602618e-16,
+      "relative_eigenpair_residual": 5.666049217173132e-10,
+      "backward_residual": 4.830920254292771e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 271
+    },
+    {
+      "hermitian_defect": 5.414466181504015e-16,
+      "relative_eigenpair_residual": 5.974180856392056e-10,
+      "backward_residual": 4.474328959391662e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 272
+    },
+    {
+      "hermitian_defect": 5.416189999380881e-16,
+      "relative_eigenpair_residual": 7.300754513031828e-10,
+      "backward_residual": 4.83466254403119e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 273
+    },
+    {
+      "hermitian_defect": 5.428688019538678e-16,
+      "relative_eigenpair_residual": 9.351603497397828e-10,
+      "backward_residual": 5.216840512877819e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 274
+    },
+    {
+      "hermitian_defect": 5.416944683264047e-16,
+      "relative_eigenpair_residual": 8.350553421486863e-10,
+      "backward_residual": 4.1860182500860436e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 275
+    },
+    {
+      "hermitian_defect": 5.414959185049952e-16,
+      "relative_eigenpair_residual": 9.876426003363611e-10,
+      "backward_residual": 4.489673614730842e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 276
+    },
+    {
+      "hermitian_defect": 5.425562980438668e-16,
+      "relative_eigenpair_residual": 1.0953269830591389e-09,
+      "backward_residual": 5.173506333970802e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 277
+    },
+    {
+      "hermitian_defect": 5.414369990686798e-16,
+      "relative_eigenpair_residual": 1.4450876226873687e-09,
+      "backward_residual": 4.541337064826148e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 278
+    },
+    {
+      "hermitian_defect": 5.404615982884226e-16,
+      "relative_eigenpair_residual": 1.757100146233049e-09,
+      "backward_residual": 4.836088248680738e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 279
+    },
+    {
+      "hermitian_defect": 5.420404661558918e-16,
+      "relative_eigenpair_residual": 2.035352255096533e-09,
+      "backward_residual": 4.444869627437285e-16,
+      "backend": "cuda",
+      "requested_backend": "cuda",
+      "k_index": 280
+    }
+  ],
+  "elapsed_seconds": 108.13039750000462,
+  "payload_sha256": "feae3dc20a7457c2ed10d145338c36ab8bf4b4868b4dd7a2e01daff11c709a19",
+  "result": {
+    "identity_hash": "0810a07d7f5878d4d03d5f8c1b909951f2617e510d5ef9fca09ddc5af0e98624",
+    "scientific_fingerprint": "53b24c7f30cdd04d73d342d5edba2a518ec9412c204ff29d07b5c814db5f1558",
+    "evaluation_key": "0810a07d7f5878d4d03d5f8c1b909951f2617e510d5ef9fca09ddc5af0e98624",
+    "evaluation_path": "E:\\Inverse design dataset for lakshya and ankit\\Tushar\\results\\pure_pwe_multistart_v1\\evaluations\\0810a07d7f5878d4d03d5f8c1b909951f2617e510d5ef9fca09ddc5af0e98624.json",
+    "cutoff": 20,
+    "normalized_x": [
+      0.6000000000000001,
+      0.32801863131167264
+    ],
+    "sides_um": [
+      169.409002736966,
+      107.07860330777447
+    ],
+    "path_parameters": [
+      0.1,
+      0.11,
+      0.12000000000000001,
+      0.13,
+      0.14,
+      0.15000000000000002,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21000000000000002,
+      0.22,
+      0.23,
+      0.24000000000000002,
+      0.25,
+      0.26,
+      0.27,
+      0.28,
+      0.29000000000000004,
+      0.30000000000000004,
+      0.31,
+      0.32,
+      0.33,
+      0.33999999999999997,
+      0.35,
+      0.36,
+      0.37,
+      0.38,
+      0.39,
+      0.4,
+      0.41000000000000003,
+      0.42000000000000004,
+      0.43000000000000005,
+      0.44000000000000006,
+      0.45000000000000007,
+      0.45999999999999996,
+      0.47,
+      0.48,
+      0.49,
+      0.5,
+      0.51,
+      0.52,
+      0.53,
+      0.54,
+      0.55,
+      0.56,
+      0.5700000000000001,
+      0.58,
+      0.59,
+      0.6,
+      0.61,
+      0.62,
+      0.63,
+      0.64,
+      0.65,
+      0.66,
+      0.67,
+      0.6799999999999999,
+      0.69,
+      0.7,
+      0.71,
+      0.72,
+      0.73,
+      0.74,
+      0.75,
+      0.76,
+      0.77,
+      0.78,
+      0.79,
+      0.8,
+      0.8099999999999999,
+      0.82,
+      0.83,
+      0.84,
+      0.85,
+      0.86,
+      0.87,
+      0.88,
+      0.89,
+      0.9,
+      0.91,
+      0.92,
+      0.93,
+      0.94,
+      0.95,
+      0.96,
+      0.97,
+      0.98,
+      0.99,
+      1.0,
+      1.01,
+      1.02,
+      1.03,
+      1.04,
+      1.05,
+      1.06,
+      1.07,
+      1.08,
+      1.09,
+      1.1,
+      1.11,
+      1.12,
+      1.1300000000000001,
+      1.1400000000000001,
+      1.1500000000000001,
+      1.1600000000000001,
+      1.1700000000000002,
+      1.1800000000000002,
+      1.1900000000000002,
+      1.2000000000000002,
+      1.2100000000000002,
+      1.2200000000000002,
+      1.2300000000000002,
+      1.2400000000000002,
+      1.2500000000000002,
+      1.26,
+      1.27,
+      1.28,
+      1.29,
+      1.3,
+      1.31,
+      1.32,
+      1.33,
+      1.34,
+      1.35,
+      1.36,
+      1.37,
+      1.3800000000000001,
+      1.3900000000000001,
+      1.4000000000000001,
+      1.4100000000000001,
+      1.4200000000000002,
+      1.4300000000000002,
+      1.4400000000000002,
+      1.4500000000000002,
+      1.4600000000000002,
+      1.4700000000000002,
+      1.4800000000000002,
+      1.4900000000000002,
+      1.5000000000000002,
+      1.51,
+      1.52,
+      1.53,
+      1.54,
+      1.55,
+      1.56,
+      1.57,
+      1.58,
+      1.59,
+      1.6,
+      1.61,
+      1.62,
+      1.6300000000000001,
+      1.6400000000000001,
+      1.6500000000000001,
+      1.6600000000000001,
+      1.6700000000000002,
+      1.6800000000000002,
+      1.6900000000000002,
+      1.7000000000000002,
+      1.7100000000000002,
+      1.7200000000000002,
+      1.7300000000000002,
+      1.7400000000000002,
+      1.7500000000000002,
+      1.7600000000000002,
+      1.77,
+      1.78,
+      1.79,
+      1.8,
+      1.81,
+      1.82,
+      1.83,
+      1.84,
+      1.85,
+      1.86,
+      1.87,
+      1.8800000000000001,
+      1.8900000000000001,
+      1.9000000000000001,
+      1.9100000000000001,
+      1.9200000000000002,
+      1.9300000000000002,
+      1.9400000000000002,
+      1.9500000000000002,
+      1.9600000000000002,
+      1.9700000000000002,
+      1.9800000000000002,
+      1.9900000000000002,
+      2.0,
+      2.0100000000000002,
+      2.02,
+      2.03,
+      2.04,
+      2.05,
+      2.06,
+      2.07,
+      2.08,
+      2.09,
+      2.1,
+      2.1100000000000003,
+      2.12,
+      2.1300000000000003,
+      2.14,
+      2.15,
+      2.16,
+      2.17,
+      2.18,
+      2.19,
+      2.2,
+      2.21,
+      2.22,
+      2.23,
+      2.24,
+      2.25,
+      2.2600000000000002,
+      2.27,
+      2.2800000000000002,
+      2.29,
+      2.3000000000000003,
+      2.31,
+      2.3200000000000003,
+      2.33,
+      2.3400000000000003,
+      2.35,
+      2.3600000000000003,
+      2.37,
+      2.3800000000000003,
+      2.39,
+      2.4000000000000004,
+      2.41,
+      2.42,
+      2.43,
+      2.44,
+      2.45,
+      2.46,
+      2.47,
+      2.48,
+      2.49,
+      2.5,
+      2.5100000000000002,
+      2.52,
+      2.5300000000000002,
+      2.54,
+      2.5500000000000003,
+      2.56,
+      2.5700000000000003,
+      2.58,
+      2.5900000000000003,
+      2.6,
+      2.6100000000000003,
+      2.62,
+      2.6300000000000003,
+      2.64,
+      2.6500000000000004,
+      2.66,
+      2.67,
+      2.68,
+      2.69,
+      2.7,
+      2.71,
+      2.72,
+      2.73,
+      2.74,
+      2.75,
+      2.7600000000000002,
+      2.77,
+      2.7800000000000002,
+      2.79,
+      2.8000000000000003,
+      2.81,
+      2.8200000000000003,
+      2.83,
+      2.8400000000000003,
+      2.85,
+      2.8600000000000003,
+      2.87,
+      2.8800000000000003,
+      2.89,
+      2.9000000000000004
+    ],
+    "frequencies_GHz": [
+      [
+        30.149887248561434,
+        498.66047303743835
+      ],
+      [
+        33.163403359602285,
+        498.0844217157933
+      ],
+      [
+        36.176493666351625,
+        497.45894368430197
+      ],
+      [
+        39.18911712723102,
+        496.78515878820826
+      ],
+      [
+        42.20123205905781,
+        496.0641537454075
+      ],
+      [
+        45.2127960886936,
+        495.29696238503305
+      ],
+      [
+        48.22376607640907,
+        494.4845478298244
+      ],
+      [
+        51.2340980522809,
+        493.62778688323215
+      ],
+      [
+        54.2437471443596,
+        492.7274568300203
+      ],
+      [
+        57.25266749707137,
+        491.78422482610125
+      ],
+      [
+        60.26081219974603,
+        490.7986400301367
+      ],
+      [
+        63.26813319964397,
+        489.7711286183738
+      ],
+      [
+        66.27458120530284,
+        488.7019918195928
+      ],
+      [
+        69.28010560450589,
+        487.5914070988347
+      ],
+      [
+        72.28465435523063,
+        486.4394326066059
+      ],
+      [
+        75.28817388240272,
+        485.2460149831688
+      ],
+      [
+        78.29060896373534,
+        484.01100055544646
+      ],
+      [
+        81.29190260876032,
+        482.734149890813
+      ],
+      [
+        84.29199592755455,
+        481.41515556092673
+      ],
+      [
+        87.29082799440228,
+        480.0536628345263
+      ],
+      [
+        90.28833569669892,
+        478.64929285230687
+      ],
+      [
+        93.28445357373536,
+        477.20166766129523
+      ],
+      [
+        96.27911364770081,
+        475.7104363121544
+      ],
+      [
+        99.27224523313912,
+        474.17530106937215
+      ],
+      [
+        102.26377474000394,
+        472.59604268333726
+      ],
+      [
+        105.25362545236345,
+        470.97254363293587
+      ],
+      [
+        108.24171729643301,
+        469.3048082967226
+      ],
+      [
+        111.22796658259774,
+        467.59297914442897
+      ],
+      [
+        114.21228572815183,
+        465.8373482588047
+      ],
+      [
+        117.19458295583411,
+        464.03836377997595
+      ],
+      [
+        120.17476196426698,
+        462.196631178224
+      ],
+      [
+        123.15272156702193,
+        460.3129095808023
+      ],
+      [
+        126.12835530091296,
+        458.3881036592122
+      ],
+      [
+        129.1015509947319,
+        456.4232518069958
+      ],
+      [
+        132.07219029670642,
+        454.41951148615055
+      ],
+      [
+        135.0401481551482,
+        452.37814267717334
+      ],
+      [
+        138.00529224803273,
+        450.3004903588087
+      ],
+      [
+        140.96748235352288,
+        448.1879668569182
+      ],
+      [
+        143.9265696524954,
+        446.04203478292374
+      ],
+      [
+        146.8823959623758,
+        443.86419112994474
+      ],
+      [
+        149.83479288224913,
+        441.6559529407368
+      ],
+      [
+        152.78358084870626,
+        439.4188448117739
+      ],
+      [
+        155.72856808122157,
+        437.15438836979087
+      ],
+      [
+        158.66954941170064,
+        434.8640937505487
+      ],
+      [
+        161.60630497254985,
+        432.5494530278216
+      ],
+      [
+        164.53859873374634,
+        430.2119354875061
+      ],
+      [
+        167.4661768601331,
+        427.8529846056356
+      ],
+      [
+        170.38876586596083,
+        425.47401657246286
+      ],
+      [
+        173.3060705401143,
+        423.0764202090774
+      ],
+      [
+        176.21777160128636,
+        420.6615581244234
+      ],
+      [
+        179.12352305116445,
+        418.23076898527086
+      ],
+      [
+        182.02294917071362,
+        415.7853707897472
+      ],
+      [
+        184.91564111120275,
+        413.3266650635952
+      ],
+      [
+        187.80115301143945,
+        410.85594192285635
+      ],
+      [
+        190.6789975658017,
+        408.37448597981574
+      ],
+      [
+        193.5486409528094,
+        405.88358309712737
+      ],
+      [
+        196.4094970193961,
+        403.38452802708883
+      ],
+      [
+        199.26092058970355,
+        400.87863300510725
+      ],
+      [
+        202.1021997510363,
+        398.3672374047436
+      ],
+      [
+        204.932546936825,
+        395.85171859753274
+      ],
+      [
+        207.75108859016865,
+        393.33350420488296
+      ],
+      [
+        210.55685315038326,
+        390.814085978485
+      ],
+      [
+        213.34875705824032,
+        388.29503560256967
+      ],
+      [
+        216.12558840667938,
+        385.77802277439537
+      ],
+      [
+        218.88598779824508,
+        383.26483599906067
+      ],
+      [
+        221.62842587939443,
+        380.7574066244774
+      ],
+      [
+        224.35117691554527,
+        378.2578367437526
+      ],
+      [
+        227.0522876581738,
+        375.7684317232564
+      ],
+      [
+        229.7295406067274,
+        373.2917382473943
+      ],
+      [
+        232.38041061161238,
+        370.83058893660393
+      ],
+      [
+        235.00201360118157,
+        368.3881547609338
+      ],
+      [
+        237.59104603027745,
+        365.9680066514699
+      ],
+      [
+        240.1437135021546,
+        363.5741878631971
+      ],
+      [
+        242.65564690671286,
+        361.2112987473156
+      ],
+      [
+        245.12180444608032,
+        358.88459557009344
+      ],
+      [
+        247.53635815080466,
+        356.60010477023536
+      ],
+      [
+        249.89256414369967,
+        354.36475341179676
+      ],
+      [
+        252.18261717958987,
+        352.1865152966022
+      ],
+      [
+        254.39749230507627,
+        350.0745699036379
+      ],
+      [
+        256.52678029437004,
+        348.03946749765447
+      ],
+      [
+        258.55852945597053,
+        346.09328781609355
+      ],
+      [
+        260.4791150373329,
+        344.24977110976744
+      ],
+      [
+        262.273169039751,
+        342.5243887272163
+      ],
+      [
+        263.92361708276127,
+        340.9343066063147
+      ],
+      [
+        265.41188237558026,
+        339.49818161426737
+      ],
+      [
+        266.71832411703855,
+        338.2357234215058
+      ],
+      [
+        267.8229693337284,
+        337.1669628959215
+      ],
+      [
+        268.70656202670443,
+        336.31120315195125
+      ],
+      [
+        269.3518843310154,
+        335.68569854899715
+      ],
+      [
+        269.7452082235759,
+        335.3042031067828
+      ],
+      [
+        269.87764278785744,
+        335.17562332678324
+      ],
+      [
+        269.88361383060226,
+        335.1783443908974
+      ],
+      [
+        269.9015257640684,
+        335.1865066734732
+      ],
+      [
+        269.9313750035889,
+        335.20010744303585
+      ],
+      [
+        269.97315557492465,
+        335.2191421411929
+      ],
+      [
+        270.0268591131636,
+        335.24360437209947
+      ],
+      [
+        270.09247486246676,
+        335.27348588909587
+      ],
+      [
+        270.1699896751137,
+        335.3087765769422
+      ],
+      [
+        270.25938801037444,
+        335.3494644297055
+      ],
+      [
+        270.3606519329271,
+        335.3955355246658
+      ],
+      [
+        270.47376111113084,
+        335.4469739914515
+      ],
+      [
+        270.5986928149281,
+        335.50376197755105
+      ],
+      [
+        270.7354219120206,
+        335.5658796072752
+      ],
+      [
+        270.88392086580063,
+        335.6333049379167
+      ],
+      [
+        271.0441597303494,
+        335.7060139090679
+      ],
+      [
+        271.21610614516123,
+        335.7839802870785
+      ],
+      [
+        271.39972532970387,
+        335.86717560390457
+      ],
+      [
+        271.59498007604356,
+        335.95556908923896
+      ],
+      [
+        271.80183074040394,
+        336.04912759677734
+      ],
+      [
+        272.0202352334207,
+        336.1478155232815
+      ],
+      [
+        272.250149008897,
+        336.2515947199624
+      ],
+      [
+        272.4915250498523,
+        336.36042439645706
+      ],
+      [
+        272.74431385430006,
+        336.4742610161704
+      ],
+      [
+        273.00846341632234,
+        336.5930581824965
+      ],
+      [
+        273.2839192069998,
+        336.7167665154304
+      ],
+      [
+        273.57062415086733,
+        336.845333517488
+      ],
+      [
+        273.8685185998298,
+        336.9787034288963
+      ],
+      [
+        274.1775403032309,
+        337.11681706967346
+      ],
+      [
+        274.497624374641,
+        337.2596116700352
+      ],
+      [
+        274.8287032528996,
+        337.4070206848235
+      ],
+      [
+        275.17070666105,
+        337.5589735946649
+      ],
+      [
+        275.5235615564657,
+        337.7153956885406
+      ],
+      [
+        275.88719207833634,
+        337.87620783032907
+      ],
+      [
+        276.26151948639546,
+        338.0413262040421
+      ],
+      [
+        276.6464620939832,
+        338.21066203986186
+      ],
+      [
+        277.0419351924773,
+        338.38412131562677
+      ],
+      [
+        277.4478509676873,
+        338.5616044350103
+      ],
+      [
+        277.8641184052548,
+        338.7430058774048
+      ],
+      [
+        278.29064318803637,
+        338.9282138201851
+      ],
+      [
+        278.7273275792413,
+        339.1171097279589
+      ],
+      [
+        279.1740702932137,
+        339.30956790762383
+      ],
+      [
+        279.6307663545033,
+        339.5054550278
+      ],
+      [
+        280.0973069370166,
+        339.70462959532006
+      ],
+      [
+        280.5735791894463,
+        339.9069413902285
+      ],
+      [
+        281.0594660385105,
+        340.11223085163823
+      ],
+      [
+        281.5548459732903,
+        340.32032841430004
+      ],
+      [
+        282.0595928040806,
+        340.5310537879312
+      ],
+      [
+        282.5735753952632,
+        340.7442151785388
+      ],
+      [
+        283.0966573690386,
+        340.95960844477213
+      ],
+      [
+        283.6286967769026,
+        341.17701618662807
+      ],
+      [
+        284.16954573365314,
+        341.39620675952983
+      ],
+      [
+        284.71905001138407,
+        341.61693321181497
+      ],
+      [
+        285.27704858878894,
+        341.8389321391551
+      ],
+      [
+        285.84337314838325,
+        342.06192245190505
+      ],
+      [
+        286.41784751766477,
+        342.2856040527088
+      ],
+      [
+        287.000287046814,
+        342.50965642089244
+      ],
+      [
+        287.5904979138218,
+        342.7337371013782
+      ],
+      [
+        288.18827635041146,
+        342.95748009963023
+      ],
+      [
+        288.79340777634155,
+        343.18049418414523
+      ],
+      [
+        289.4056658315863,
+        343.4023611015614
+      ],
+      [
+        290.02481129407664,
+        343.6226337163906
+      ],
+      [
+        290.65059086566436,
+        343.84083408770783
+      ],
+      [
+        291.28273581194014,
+        344.0564515075976
+      ],
+      [
+        291.920960433116,
+        344.26894053062153
+      ],
+      [
+        292.5649603464866,
+        344.4777190385548
+      ],
+      [
+        293.21441055241905,
+        344.68216639549576
+      ],
+      [
+        293.8689632560512,
+        344.8816217686591
+      ],
+      [
+        294.52824540736117,
+        345.07538270818395
+      ],
+      [
+        295.1918559274578,
+        345.2627041107545
+      ],
+      [
+        295.8593625696245,
+        345.44279771465375
+      ],
+      [
+        296.5302983687758,
+        345.6148323169855
+      ],
+      [
+        297.2041576210801,
+        345.7779349414751
+      ],
+      [
+        297.88039132629524,
+        345.93119323203285
+      ],
+      [
+        298.5584020227668,
+        346.0736594008039
+      ],
+      [
+        299.2375379272001,
+        346.20435610877513
+      ],
+      [
+        299.9170862899426,
+        346.32228471351993
+      ],
+      [
+        300.59626586117383,
+        346.426436363839
+      ],
+      [
+        301.27421835770735,
+        346.51580646064605
+      ],
+      [
+        301.9499988100337,
+        346.58941301716436
+      ],
+      [
+        302.62256466709977,
+        346.64631944189586
+      ],
+      [
+        303.29076353562414,
+        346.6856622113605
+      ],
+      [
+        303.95331944041925,
+        346.70668379141756
+      ],
+      [
+        304.6088175166594,
+        346.7087709904181
+      ],
+      [
+        305.2556870826006,
+        346.6914986714512
+      ],
+      [
+        305.8921831140315,
+        346.6546784188971
+      ],
+      [
+        306.5163662482537,
+        346.59841133560593
+      ],
+      [
+        307.12608160352755,
+        346.5231436603665
+      ],
+      [
+        307.7189369290948,
+        346.42972335459416
+      ],
+      [
+        308.29228091159183,
+        346.3194552401081
+      ],
+      [
+        308.8431828787928,
+        346.1941517050852
+      ],
+      [
+        309.3684156674279,
+        346.05617546226495
+      ],
+      [
+        309.8644440487783,
+        345.9084703732135
+      ],
+      [
+        310.32742181796,
+        345.75457598549923
+      ],
+      [
+        310.75320134164934,
+        345.5986211978655
+      ],
+      [
+        311.13735992592376,
+        345.4452924934569
+      ],
+      [
+        311.4752475583566,
+        345.2997725757768
+      ],
+      [
+        311.76206013742916,
+        345.16764623028996
+      ],
+      [
+        311.99294091597204,
+        345.0547720680988
+      ],
+      [
+        312.16311030093993,
+        344.9671216630908
+      ],
+      [
+        312.2680203533592,
+        344.91059150418533
+      ],
+      [
+        312.3035256592168,
+        344.890797801022
+      ],
+      [
+        312.1537792677199,
+        344.9797951724388
+      ],
+      [
+        311.69380457420425,
+        345.2676758266714
+      ],
+      [
+        310.91935268065737,
+        345.77176643264136
+      ],
+      [
+        309.84089303559045,
+        346.4941253685773
+      ],
+      [
+        308.480460040557,
+        347.4242978745256
+      ],
+      [
+        306.86695057860555,
+        348.5438102953206
+      ],
+      [
+        305.0316267549894,
+        349.83059910601514
+      ],
+      [
+        303.004848915551,
+        351.2623021603277
+      ],
+      [
+        300.81421584430876,
+        352.8181970627523
+      ],
+      [
+        298.4838089401716,
+        354.48006234406137
+      ],
+      [
+        296.03412744623955,
+        356.23235621200354
+      ],
+      [
+        293.48237928445127,
+        358.0620373164068
+      ],
+      [
+        290.8429111956254,
+        359.95823781569004
+      ],
+      [
+        288.12765911235255,
+        361.91190504587104
+      ],
+      [
+        285.34656263752663,
+        363.9154671238204
+      ],
+      [
+        282.50792299499835,
+        365.96254345036886
+      ],
+      [
+        279.6187016945872,
+        368.0477037645617
+      ],
+      [
+        276.68476504292596,
+        370.1662717619702
+      ],
+      [
+        273.711082323063,
+        372.31416663597827
+      ],
+      [
+        270.7018857026931,
+        374.487775620594
+      ],
+      [
+        267.6607991346797,
+        376.68385131531227
+      ],
+      [
+        264.59094238909574,
+        378.8994285856939
+      ],
+      [
+        261.49501524552073,
+        381.1317568635783
+      ],
+      [
+        258.3753658732651,
+        383.3782445902841
+      ],
+      [
+        255.23404660465553,
+        385.63641333577664
+      ],
+      [
+        252.07285963063543,
+        387.9038597953474
+      ],
+      [
+        248.89339461713078,
+        390.17822443042354
+      ],
+      [
+        245.6970598180165,
+        392.457166013832
+      ],
+      [
+        242.48510793069843,
+        394.73834177404956
+      ],
+      [
+        239.25865768615344,
+        397.019393226839
+      ],
+      [
+        236.0187119561306,
+        399.29793811999457
+      ],
+      [
+        232.7661730101478,
+        401.5715691960877
+      ],
+      [
+        229.50185542749884,
+        403.83786064937067
+      ],
+      [
+        226.22649706573958,
+        406.09438316131593
+      ],
+      [
+        222.94076842211163,
+        408.3387281878536
+      ],
+      [
+        219.64528065096522,
+        410.56854166027364
+      ],
+      [
+        216.34059245586758,
+        412.78156642722786
+      ],
+      [
+        213.0272160377686,
+        414.97569162622165
+      ],
+      [
+        209.7056222459032,
+        417.1490058641369
+      ],
+      [
+        206.3762450510567,
+        419.29984983935225
+      ],
+      [
+        203.03948544664726,
+        421.4268631765881
+      ],
+      [
+        199.69571485899013,
+        423.5290201026283
+      ],
+      [
+        196.34527813728,
+        425.6056493690826
+      ],
+      [
+        192.98849618446744,
+        427.6564355117639
+      ],
+      [
+        189.6256682773858,
+        429.6814008553058
+      ],
+      [
+        186.257074118302,
+        431.68087010484277
+      ],
+      [
+        182.8829756540677,
+        433.65542141703935
+      ],
+      [
+        179.50361869376437,
+        435.60582906770577
+      ],
+      [
+        176.1192343498277,
+        437.5330031056874
+      ],
+      [
+        172.73004032502172,
+        439.43793079917583
+      ],
+      [
+        169.33624206443034,
+        441.32162353602666
+      ],
+      [
+        165.9380337907386,
+        443.1850714693832
+      ],
+      [
+        162.53559943329833,
+        445.0292069050296
+      ],
+      [
+        159.12911346565426,
+        446.8548763838818
+      ],
+      [
+        155.71874166146185,
+        448.6628206970701
+      ],
+      [
+        152.30464178070736,
+        450.4536616686548
+      ],
+      [
+        148.88696418819123,
+        452.22789439109437
+      ],
+      [
+        145.46585241782088,
+        453.9858836280893
+      ],
+      [
+        142.0414436846265,
+        455.72786322630947
+      ],
+      [
+        138.61386935231457,
+        457.4539375654371
+      ],
+      [
+        135.1832553591863,
+        459.1640842642008
+      ],
+      [
+        131.7497226099597,
+        460.85815754339217
+      ],
+      [
+        128.31338733101842,
+        462.53589180380163
+      ],
+      [
+        124.87436139977987,
+        464.19690510895373
+      ],
+      [
+        121.43275264685869,
+        465.84070236430205
+      ],
+      [
+        117.98866513215403,
+        467.4666780687088
+      ],
+      [
+        114.54219940177039,
+        469.0741185741182
+      ],
+      [
+        111.09345272549295,
+        470.66220383678865
+      ],
+      [
+        107.64251931510813,
+        472.23000868001617
+      ],
+      [
+        104.18949052613242,
+        473.77650361594664
+      ],
+      [
+        100.73445504801026,
+        475.30055529647314
+      ],
+      [
+        97.27749907891749,
+        476.8009266838542
+      ],
+      [
+        93.81870648713816,
+        478.27627704744845
+      ],
+      [
+        90.35815896600403,
+        479.725161912567
+      ],
+      [
+        86.89593617317573,
+        481.14603310275066
+      ],
+      [
+        83.43211586575934,
+        482.5372390355106
+      ],
+      [
+        79.96677402392307,
+        483.89702544955446
+      ],
+      [
+        76.49998496821976,
+        485.22353675929924
+      ],
+      [
+        73.03182146986967,
+        486.51481825145316
+      ],
+      [
+        69.56235485532378,
+        487.7688193522712
+      ],
+      [
+        66.09165510310329,
+        488.98339820898667
+      ],
+      [
+        62.619790935429734,
+        490.15632783410916
+      ],
+      [
+        59.14682991092417,
+        491.2853040630804
+      ],
+      [
+        55.67283850256236,
+        492.36795556362114
+      ],
+      [
+        52.19788217953909,
+        493.40185611339706
+      ],
+      [
+        48.72202548428761,
+        494.38453932339985
+      ],
+      [
+        45.24533210201759,
+        495.31351592789713
+      ],
+      [
+        41.767864934830186,
+        496.1862936854457
+      ],
+      [
+        38.28968616022933,
+        497.0003998410346
+      ],
+      [
+        34.81085730278523,
+        497.75340598460684
+      ]
+    ],
+    "gap_GHz": 22.872097667566436,
+    "gradient_GHz_per_um": [
+      0.8036426638764614,
+      -0.21101323358070923
+    ],
+    "gradient_normalized_x": [
+      39.380583293774,
+      -10.340197944482348
+    ],
+    "gradient_normalized": [
+      39.380583293774,
+      -10.340197944482348
+    ],
+    "gradient_reliable": true,
+    "checks": {
+      "gradient_reliability_reasons": [],
+      "edge_indices": [
+        190,
+        90
+      ],
+      "edge_path_parameters": [
+        2.0,
+        1.0
+      ],
+      "edge_uniqueness_margins_GHz": [
+        0.0355053058576118,
+        0.0027210641141550695
+      ],
+      "active_mode_relative_separations": [
+        0.21957760148728167,
+        0.35168067825491633
+      ],
+      "cpu_device_max_absolute_GHz": 2.4994406544465164e-09,
+      "edge_three_mode_max_absolute_GHz": 2.3032953322399408e-10,
+      "edge_three_mode_max_relative_eigenpair_residual": 1.7287962555850145e-11,
+      "max_relative_eigenpair_residual": 2.613333794080377e-09,
+      "point_backends": [
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda",
+        "cuda"
+      ]
+    },
+    "elapsed_seconds": 108.13039750000462,
+    "cached": false,
+    "resumed_point_count": 0,
+    "gap_scope": "sampled path, not full Brillouin zone",
+    "continuum_accuracy_certified": false
+  }
+}

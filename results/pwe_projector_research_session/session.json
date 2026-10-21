@@ -1,0 +1,89 @@
+{
+  "user_authorization": "Continue mathematical pure-PWE research for roughly three hours; temporary wake request; no ML, COMSOL fitting or changes to validated results.",
+  "deadline_utc": "2026-10-20T17:20:00Z",
+  "deadline_local": "2026-10-20 22:50 Asia/Calcutta",
+  "automation_id": "bounded-pure-pwe-research",
+  "finalization": {
+    "status": "Bounded session finished at deadline; heartbeat PAUSED. Do not launch new experiments without renewed user authorization.",
+    "primary_completed": "120/120 jobs complete",
+    "radial_quadrature_completed": "61/61 jobs complete",
+    "angular_fullpath_supplement": "Complete and passed; results/quadrature_full_order_v1",
+    "new_inverse_physics_launched": false,
+    "reason_inverse_not_launched": "Forward evaluation and automatic numerical guards prepared and tested, but insufficient remaining authorized time for the preregistered three-target search plus independent refinement. Independent review identified a future-launch provenance gap: combined CLI must verify angular result/status run_id and recompute comparison from the checksum-validated evaluation. CLI is explicitly fail-closed until this is implemented/tested. No launch approval artifact was granted.",
+    "final_targeted_tests": "120 passed, zero failures; final_120_tests_sequential_mkl.xml. Default Anaconda combined runtime has confirmed duplicate Intel OpenMP DLL conflict; process-local sequential MKL test run passes without persistent environment changes.",
+    "readiness_evidence": "results/pwe_projector_research_session/exploratory_launch_review.json; diagnostic passed=true, launch_authorized=false",
+    "final_report_generator": "scripts/summarize_projector_research.py",
+    "final_report": "results/pwe_projector_research_session/FINAL_REPORT.md",
+    "shutdown_verified": "Wake log RELEASED at 2026-10-20T17:20:00.000387+00:00; helper PID57356 exited. Automation update confirmed PAUSED and TOML rechecked. All three scientific worker lock files absent; prior experiments complete.",
+    "historical_snapshot_note": "Old status_at_session_update fields below are historical snapshots, not current worker states."
+  },
+  "wake_helper_pid": 57356,
+  "wake_helper_log": "results/pwe_projector_research_session/awake.log",
+  "wake_policy": "SetThreadExecutionState SYSTEM_REQUIRED and DISPLAY_REQUIRED until deadline. No security/lock policy changes.",
+  "primary_experiment": {
+    "implementation": "scripts/audit_projector_stabilization.py",
+    "scientific_config": "configs/projector_stabilization_v1.json",
+    "output": "results/projector_stabilization_v1",
+    "worker_pid": 29520,
+    "launcher_pid": 48188,
+    "stage": "all",
+    "device": "cuda for full paths, CPU for derivative/eigenvector diagnostics",
+    "planned_jobs": 120,
+    "protected_file_count": 320,
+    "frozen_after_launch": true,
+    "resume": "Same script/config/output; --until-utc only with authorization for a new runtime window. Never edit fingerprinted source while running."
+  },
+  "initial_targeted_tests": {
+    "passed": 83,
+    "scope": "math-only trust-region kernel, projector experiment, stable/homothetic/quadrature projectors, variational baseline, prior sensitivity, inverse, validation and interface suites",
+    "environment_note": "Default pytest temp folder has a Windows permission conflict. Use a verified NEW scratch/projector_tests_GUID --basetemp, not an existing user directory."
+  },
+  "research_tracks": [
+    {
+      "name": "stable_nearest",
+      "meaning": "Canonical geometry and deterministic near-tie selection; still piecewise in side lengths. Never claim its frozen-branch derivative covers moving assignments."
+    },
+    {
+      "name": "homothetic_radial",
+      "meaning": "Fixed nearest-center Voronoi partition and angle-dependent normals. Geometric containment proof across documented size range. Projector is independent of both lengths; analytic material/energy chain includes all length dependence of this experimental discretization."
+    },
+    {
+      "name": "variational_no_projector",
+      "meaning": "Independent direct Galerkin Hz PWE baseline, analytic eta derivatives, slower expected cutoff convergence.",
+      "planned_script": "scripts/audit_variational_pwe.py",
+      "output": "results/variational_pwe_audit_v1",
+      "status_at_session_update": "complete: 34/34 jobs; all 8 finite-difference comparisons passed; M20-to-M25 five-point gaps still shift about 0.26 to 0.29 GHz. Retain as control, not precision inverse solver."
+    },
+    {
+      "name": "radial_projector_quadrature",
+      "meaning": "Research direct Fourier integration on fixed triangular Voronoi cells. Analytic radial integral, angular Gauss quadrature split at chord/arc transitions. Can remove spatial normal-grid sampling; still needs quadrature, cutoff and derivative tests.",
+      "planned_module": "src/invdes/radial_projector_quadrature.py",
+      "script": "scripts/audit_radial_quadrature.py",
+      "output": "results/radial_quadrature_audit_v1",
+      "worker_pid": 38888,
+      "launcher_pid": 43536,
+      "status_at_session_update": "Screen complete47/47, all12 FD checks passed (worst relative error2.9958e-5). Full stage ALREADY LAUNCHED at20:19IST; do not duplicate. Use SAME CUDA-environment Python for resume because Python version is fingerprinted.",
+      "full_stage": "Running --stage all --device cuda --until-utc 2026-10-20T17:20:00+00:00; 61 total jobs. Reuses screen checkpoints and adds 6 full spectra plus 8 full finite-difference spectra. The current traversal completed_jobs resets to23 before newfulljobs, though47 scientific checkpoints already exist; results.json completed_jobs counts all savedcases. Logs full.stdout.log/full.stderr.log. Do not stop or duplicate it.",
+      "early_quadrature_finding": "Full M25 Fourier-difference range: order64 has raw trace defect about0.0059; predeclared order128 agrees with256 within1.1e-15. Material arc quadrature64vs128 agrees to relative Frobenius1.3e-15. All3 fivepoint M20-to25 gap changes: -0.0012614,+0.0019395,-0.0112914 GHz. These are not full-path or continuum accuracy claims."
+    },
+    {
+      "name": "anchor_free_trust_region_prototype",
+      "meaning": "Separate 2D bounded minimum-norm Newton/trust-region kernel/config/toy tests implemented and all14 tests passed; total83 targeted tests green. Physics evaluator wrapper NOT yet implemented. Fixed off-grid start, no saved anchors. Do not run physics inverse until direct-radial derivative and full-path refinement results assessed. Driver returns last accepted iterate; rejected trials remain in trace if separately reporting closest observed.",
+      "planned_module": "src/invdes/inverse/physics_trust_region.py",
+      "planned_config": "configs/pure_pwe_math_inverse_v1.json",
+      "planned_targets_GHz": [10, 20, 30],
+      "acceptance_note": "Internal M20 target tolerance0.01GHz, independently evaluate unchanged geometry atM25. Existing inverse tolerance0.05GHz remains unchanged. Report finite-cutoff target errors and M-change separately; not continuum or COMSOL certification."
+    }
+  ],
+  "next_decisions": [
+    "Do not duplicate, interrupt or edit the running main experiment.",
+    "Inspect completed checkpoints and protected-hash verification, not just process presence.",
+    "Compare sensitivity across Fourier cutoffs and grids separately from finite-M finite-difference agreement.",
+    "Full-path gaps are on the existing 281-point path, not full-Brillouin-zone guarantees; inspect active-edge margins and eigenmode separations.",
+    "If quadrature implementation passes unit checks, preregister a separate isolated experiment before large runs. Use geometry-only convergence, never tune against COMSOL or old frequency targets.",
+    "After radial_quadrature_audit_v1 full61jobs completes, inspect all full-gap FD errors, mode/edge uniqueness, M20-to25 full-path gap/frequency shifts and preserved hashes. If suitable, build a separate physics evaluator for trust-region prototype, reusing constant quadrature projectors perM, fresh full281 PWE pertrial, analytic gradients at activeedges, conservative degeneracy/polling fallback. New outputfolder only; noanchorlookup. The user authorizedmath-first exploration but no production promotion.",
+    "Before any inverse physics run, rerun all relevant tests including test_physics_trust_region.py and record an explicit gate review artifact. Config is implementation-only and does not itself authorize bypassing evidence checks.",
+    "Do not promote any experimental implementation into production automatically.",
+    "At deadline stop new experiments, retain checkpoints, release wake state automatically, summarize evidence and pause the heartbeat."
+  ]
+}

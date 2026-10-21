@@ -2,33 +2,47 @@
 # Specification of physical unit cell geometry, materials, and solver settings.
 # Per PLAN.md H1 and AGENTS.md rule 2, fields marked TODO must be supplied from the COMSOL .mph file.
 
-a_um: 210.01                 # lattice constant used for normalisation
+a_um: 242.5                  # lattice constant used for normalisation
 cell:
   x_um: 363.75
-  y_um: 210.01
-  n_lattice_points_in_cell: TODO  # 1 or 2 (hex in rectangular supercell?)
-lattice: TODO                # hexagonal | rectangular | other
-polarization: TODO           # TE (H_z) | TM (E_z) | both-mixed   (what does the COMSOL study solve?)
+  y_um: 210.011
+  n_lattice_points_in_cell: 1  # verified: 1 point (hexagonal lattice in a rhombus unit cell)
+lattice: hexagonal           # verified: A1 = (a, 0), A2 = (a/2, sqrt(3)*a/2)
+polarization: TE (H_z)       # verified: 2D TM in COMSOL terminology, corresponding to E=(Ex,Ey,0) and H=(0,0,Hz)
 structures:
   para:
     background:
-      eps_r: TODO
+      eps_r: 9               # verified: Silicon with active n=3, ki=0 -> eps_r=9
     inclusions:              # list; coordinates relative to cell origin, in um
-      - shape: TODO
-        eps_r: TODO
-        center_um: [TODO, TODO]
+      - shape: clipped_triangle_down  # intersection of downward equilateral triangle and concentric circle
+        eps_r: 1             # Air
+        center_um: [242.5, 140.00744]
         size_params:
-          L1: TODO
-          L2: TODO
+          L1: variable       # L1 is the side length of the parent downward triangle
+      - shape: clipped_triangle_up    # intersection of upward equilateral triangle and concentric circle
+        eps_r: 1             # Air
+        center_um: [121.25, 70.00372]
+        size_params:
+          L2: variable       # L2 is the side length of the parent upward triangle
   r1:
     background:
-      eps_r: TODO
-    inclusions: TODO
+      eps_r: 9               # verified: Silicon with active n=3, ki=0 -> eps_r=9
+    inclusions:              # list; coordinates relative to cell origin, in um
+      - shape: clipped_triangle_down  # intersection of downward equilateral triangle and concentric circle
+        eps_r: 1             # Air
+        center_um: [242.5, 140.00744]
+        size_params:
+          L1: variable       # L1 is the side length of the parent downward triangle
+      - shape: clipped_triangle_up    # intersection of upward equilateral triangle and concentric circle
+        eps_r: 1             # Air
+        center_um: [121.25, 70.00372]
+        size_params:
+          L2: variable       # L2 is the side length of the parent upward triangle
 k_path:                      # how k in [0.1, 2.9] maps to (kx, ky)
-  segments: TODO             # e.g. [[G,X],[X,M],[M,G]] with coordinates in units of 2pi/cell
+  segments: [[G, M], [M, K], [K, G]] # verified: k=0:G, k=1:M, k=2:K, k=3:G
   kink_indices: [90, 190]
 solver:
-  n_eigs_requested: TODO
-  search_around_GHz: TODO
-  has_PML_or_loss: TODO
-materials_dispersive_or_metal: TODO   # if true, PWE is invalid: report and stop
+  n_eigs_requested: 2
+  search_around_GHz: 0       
+  has_PML_or_loss: False     # verified: Floquet periodic boundaries, no PML
+materials_dispersive_or_metal: False   # verified: eps is real and constant (n=3 and n=1, ki=0)

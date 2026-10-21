@@ -1,16 +1,5 @@
-"""
-Inverse design module for EM unit cells.
-"""
+"""Physics-only inverse design; no learned models or training interfaces.
 
-from invdes.inverse.spec import TargetCurve, GapSpec
-from invdes.inverse.screen import screen_candidates
-from invdes.inverse.refine import refine_candidate
-from invdes.inverse.engine import InverseDesignEngine
-
-__all__ = [
-    "TargetCurve",
-    "GapSpec",
-    "screen_candidates",
-    "refine_candidate",
-    "InverseDesignEngine"
-]
+Use pure_pwe for saved-library bracketing, physics_trust_region for bounded
+local search, and the supplied research launchers for checkpointed experiments.
+"""
