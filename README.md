@@ -97,10 +97,3 @@ results/           Scientific evidence, checkpoints and generated reports
 docs/              Current guides
 ```
 
-Old ML code, training scripts, demos, redundant data and unrelated reports were
-removed into a hash-verified archive outside Git. PWE investigation history is
-retained because provenance audits depend on it. Proprietary COMSOL models,
-raw exports, environments and scratch files are local-only and ignored.
-
-No project-wide reuse licence is declared. Confirm ownership and permission
-before redistributing code or data beyond permissions already granted.
